@@ -2,29 +2,17 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useApi } from "../../../hooks/useApi";
 import { handleError } from "../../../utils/handleError";
+import { useFetchData } from "../../../hooks/useFetchData";
 
 export const useCustomerDetail = () => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const { apiGet, apiDelete } = useApi();
-    const [customer, setCustomer] = useState([]);
+    const { apiDelete } = useApi();
     const [errors, setErrors] = useState({ general: [] });
-
-    useEffect(() => {
-        const getCustomerDetail = async () => {
-            try {
-                const response = await apiGet(`/customers/${id}`);
-                if (response) {
-                    const customer = await response.json();
-                    setCustomer(customer);
-                }
-            } catch (error) {
-                const newErrors = await handleError(error);
-                setErrors(newErrors);
-            }
-        };
-        getCustomerDetail();
-    }, []);
+    const { dataState: customer } = useFetchData({
+        url: `/customers/${id}`,
+        externalErrorState: [errors, setErrors],
+    });
 
     const handleDelete = async () => {
         if (confirm("Do you want to delete this customer?")) {

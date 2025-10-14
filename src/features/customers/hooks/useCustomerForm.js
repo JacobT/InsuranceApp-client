@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useApi } from "../../../hooks/useApi";
 import { handleError } from "../../../utils/handleError";
 import customerErrors from "../../../utils/errors/customerErrors";
+import { useFetchData } from "../../../hooks/useFetchData";
 
-export const useCustomerForm = (mode) => {
+export const useCustomerForm = () => {
     const navigate = useNavigate();
-    const { apiGet, apiPost, apiPut } = useApi();
+    const { apiPost, apiPut } = useApi();
     const { id } = useParams();
     const { state } = useLocation();
+    const mode = !state?.customerState && !id ? "create" : "edit";
     const createEmptyCustomer = () => ({
         firstName: "",
         lastName: "",
@@ -26,21 +28,13 @@ export const useCustomerForm = (mode) => {
         customerErrors.createEmptyErrorsState()
     );
 
-    useEffect(() => {
-        const getCustomer = async () => {
-            try {
-                const response = await apiGet(`/customers/${id}`);
-                if (response) {
-                    const customer = await response.json();
-                    setCustomer(customer);
-                }
-            } catch (error) {
-                const newErrors = await handleError(error, customerErrors);
-                setErrors(newErrors);
-            }
-        };
-        if (!state?.customerState && id) getCustomer();
-    }, []);
+    useFetchData({
+        url: `/customers/${id}`,
+        externalDataState: [customer, setCustomer],
+        externalErrorState: [errors, setErrors],
+        customErrors: customerErrors,
+        enabled: mode === "edit",
+    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;

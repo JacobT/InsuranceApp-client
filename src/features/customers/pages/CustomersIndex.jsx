@@ -1,30 +1,12 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useApi } from "../../../hooks/useApi";
 import CustomersTable from "../components/CustomersTable";
-import { handleError } from "../../../utils/handleError";
 import ErrorMessage from "../../../components/ErrorMessage";
+import { useFetchData } from "../../../hooks/useFetchData";
 
 const CustomersIndex = () => {
-    const { apiGet } = useApi();
-    const [customers, setCustomers] = useState([]);
-    const [errors, setErrors] = useState({ general: [] });
-
-    useEffect(() => {
-        const getCustomers = async () => {
-            try {
-                const response = await apiGet("/customers");
-                if (response) {
-                    const customers = await response.json();
-                    setCustomers(customers);
-                }
-            } catch (error) {
-                const newErrors = await handleError(error);
-                setErrors(newErrors);
-            }
-        };
-        getCustomers();
-    }, []);
+    const { dataState: customers, errorsState: errors } = useFetchData({
+        url: "/customers",
+    });
 
     return (
         <div>

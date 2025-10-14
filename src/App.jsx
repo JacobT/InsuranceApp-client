@@ -17,11 +17,11 @@ function App() {
                     <Route path="/customers/:id" element={<CustomerDetail />} />
                     <Route
                         path="/customers/create"
-                        element={<CustomerForm mode={"create"} />}
+                        element={<CustomerForm />}
                     />
                     <Route
                         path="/customers/:id/edit"
-                        element={<CustomerForm mode={"edit"} />}
+                        element={<CustomerForm />}
                     />
 
                     <Route
