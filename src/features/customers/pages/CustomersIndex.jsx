@@ -35,7 +35,9 @@ const CustomersIndex = () => {
                         <small>Amount of customers: {customers.length}</small>
                     </div>
                     <div className="col col-auto text-end d-flex align-items-center gap-1">
-                        <button className="btn btn-primary">Filter</button>
+                        <button className="btn btn-primary">
+                            Filter (NYI)
+                        </button>
                     </div>
                 </div>
             </div>

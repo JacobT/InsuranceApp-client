@@ -1,45 +1,11 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { useApi } from "../../../hooks/useApi";
+import { Link } from "react-router-dom";
 import { useAuthContext } from "../../../contexts/AuthContext";
+import { useCustomerDetail } from "../hooks/useCustomerDetail";
 import ErrorMessage from "../../../components/ErrorMessage";
-import { handleError } from "../../../utils/handleError";
 
 const CustomerDetail = () => {
-    const navigate = useNavigate();
-    const { id } = useParams();
-    const { apiGet, apiDelete } = useApi();
     const { userState } = useAuthContext();
-    const [customer, setCustomer] = useState([]);
-    const [errors, setErrors] = useState({ general: [] });
-
-    useEffect(() => {
-        const getCustomerDetail = async () => {
-            try {
-                const response = await apiGet(`/customers/${id}`);
-                if (response) {
-                    const customer = await response.json();
-                    setCustomer(customer);
-                }
-            } catch (error) {
-                const newErrors = await handleError(error);
-                setErrors(newErrors);
-            }
-        };
-        getCustomerDetail();
-    }, []);
-
-    const handleDelete = async () => {
-        if (confirm("Do you want to delete this customer?")) {
-            try {
-                await apiDelete(`/customers/${id}`);
-                navigate("/customers");
-            } catch (error) {
-                const newErrors = await handleError(error);
-                alert(newErrors.general);
-            }
-        }
-    };
+    const { id, customer, errors, handleDelete } = useCustomerDetail();
 
     return (
         <div>
