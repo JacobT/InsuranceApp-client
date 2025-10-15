@@ -37,10 +37,8 @@ const defaultErrorConfig = {
     createEmptyErrorsState: () => ({ general: [] }),
 };
 
-export const handleError = async (
-    error,
-    { map, createEmptyErrorsState } = defaultErrorConfig
-) => {
+export const handleError = async (error, errorConfig) => {
+    const { map, createEmptyErrorsState } = errorConfig ?? defaultErrorConfig;
     const newErrors = createEmptyErrorsState();
 
     if (error instanceof ApiRequestError) {
