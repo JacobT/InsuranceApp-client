@@ -40,10 +40,6 @@ export const useAuth = () => {
         getUser();
     }, []);
 
-    useEffect(() => {
-        console.log(user);
-    }, [user]);
-
     const saveTokens = (newTokens) => {
         saveRefreshToken(newTokens[REFRESH_KEY]);
 
