@@ -2,15 +2,23 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { useCustomerDetail } from "../hooks/useCustomerDetail";
 import ErrorMessage from "../../../components/ErrorMessage";
+import InsurancesTable from "../../insurances/components/InsurancesTable";
 
 const CustomerDetail = () => {
     const { userState } = useAuthContext();
-    const { id, customer, errors, handleDelete } = useCustomerDetail();
+    const {
+        id,
+        customer,
+        customerErrors,
+        insurances,
+        insurancesErrors,
+        handleDelete,
+    } = useCustomerDetail();
 
     return (
         <div>
-            {errors.general.length > 0 ? (
-                <ErrorMessage error={errors.general} />
+            {customerErrors.general.length > 0 ? (
+                <ErrorMessage error={customerErrors.general} />
             ) : (
                 <div className="container">
                     <div className="row">
@@ -44,6 +52,28 @@ const CustomerDetail = () => {
                                     </button>
                                 </div>
                             )}
+                    </div>
+                </div>
+            )}
+            <hr />
+            {insurancesErrors.general.length > 0 ? (
+                <ErrorMessage error={insurancesErrors.general} />
+            ) : (
+                <div className="container">
+                    <div className="row mb-3">
+                        <div className="col text-center">
+                            <Link
+                                to={"/customers/create"}
+                                className="btn btn-primary disabled"
+                            >
+                                Add new insurance
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <InsurancesTable insurances={insurances} />
+                        </div>
                     </div>
                 </div>
             )}

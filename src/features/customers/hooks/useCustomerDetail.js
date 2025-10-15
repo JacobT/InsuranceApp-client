@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useApi } from "../../../hooks/useApi";
 import { handleError } from "../../../utils/handleError";
@@ -8,11 +8,17 @@ export const useCustomerDetail = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const { apiDelete } = useApi();
-    const [errors, setErrors] = useState({ general: [] });
+    const [customerErrors, setcustomerErrors] = useState({ general: [] });
+
     const { dataState: customer } = useFetchData({
         url: `/customers/${id}`,
-        externalErrorState: [errors, setErrors],
+        externalErrorState: [customerErrors, setcustomerErrors],
     });
+
+    const { dataState: insurances, errorsState: insurancesErrors } =
+        useFetchData({
+            url: `/customers/${id}/insurances`,
+        });
 
     const handleDelete = async () => {
         if (confirm("Do you want to delete this customer?")) {
@@ -26,5 +32,12 @@ export const useCustomerDetail = () => {
         }
     };
 
-    return { id, customer, errors, handleDelete };
+    return {
+        id,
+        customer,
+        customerErrors,
+        insurances,
+        insurancesErrors,
+        handleDelete,
+    };
 };
