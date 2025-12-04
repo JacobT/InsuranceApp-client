@@ -1,0 +1,78 @@
+import { Link } from "react-router-dom";
+import { useInsuranceDetail } from "../hooks/useInsuranceDetail";
+import { useAuthContext } from "../../../contexts/AuthContext";
+import { dateStringFormatter } from "../../../utils/dateStringFormatter";
+import ErrorMessage from "../../../components/ErrorMessage";
+import ClaimsTable from "../../claims/components/ClaimsTable";
+
+const InsuranceDetail = () => {
+    const { userState } = useAuthContext();
+    const { id, insurance, insuranceErrors, handleDelete } =
+        useInsuranceDetail();
+
+    return (
+        <div>
+            {insuranceErrors.general.length > 0 ? (
+                <ErrorMessage error={insuranceErrors.general} />
+            ) : (
+                <div className="container">
+                    <div className="row">
+                        <div className="col d-flex align-items-center">
+                            <h1 className="m-0">{insurance.name}</h1>
+                        </div>
+                        {userState.roles != "user" &&
+                            userState.status === "authenticated" && (
+                                <div className="col col-auto d-flex flex-column align-items-stretch justify-content-center gap-1">
+                                    <Link
+                                        to={`/insurances/${id}/edit`}
+                                        state={{ dataState: insurance }}
+                                        className="btn btn-primary"
+                                    >
+                                        Edit
+                                    </Link>
+
+                                    <button
+                                        className="btn btn-danger"
+                                        onClick={handleDelete}
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            )}
+                    </div>
+                    <hr />
+                    <div className="row">
+                        <div className="col">
+                            <h5>Valid from:</h5>
+                            <p>{dateStringFormatter(insurance.validFrom)}</p>
+                        </div>
+                        <div className="col">
+                            <h5>Valid to:</h5>
+                            <p>{dateStringFormatter(insurance.validTo)}</p>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <h5>Subject:</h5>
+                            <p>{insurance.subject}</p>
+                            <h5>Amount:</h5>
+                            <p>{insurance.amount}</p>
+                        </div>
+                    </div>
+                    {insurance.claims && insurance.claims.length > 0 && (
+                        <>
+                            <hr />
+                            <div className="row">
+                                <div className="col">
+                                    <ClaimsTable claims={insurance.claims} />
+                                </div>
+                            </div>
+                        </>
+                    )}
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default InsuranceDetail;

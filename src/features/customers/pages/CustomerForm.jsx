@@ -1,15 +1,24 @@
-import { useCustomerForm } from "../hooks/useCustomerForm";
+import { useForm } from "../../../hooks/useForm";
 import ErrorMessage from "../../../components/ErrorMessage";
 import InputField from "../../../components/InputField";
+import customerErrors from "../../../utils/errors/customerErrors";
 
-const CustomerForm = ({ mode }) => {
-    const { customerState, errorsState, handleChange, handleSubmit } =
-        useCustomerForm(mode);
+const CustomerForm = () => {
+    const {
+        mode,
+        dataState: customerState,
+        errorsState,
+        handleChange,
+        handleSubmit,
+    } = useForm({
+        url: "/customers",
+        customErrors: customerErrors,
+    });
 
     return (
         <>
             <h1 className="mx-2">
-                {mode === "create" ? "Create customer:" : "Edit customer:"}
+                {mode === "create" ? "Create" : "Edit"} customer:
             </h1>
             <hr />
             {errorsState.general.length > 0 && (

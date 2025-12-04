@@ -4,7 +4,7 @@ const InsurancesTable = ({ insurances }) => {
     const navigate = useNavigate();
 
     return (
-        <table className="table table-bordered table-hover table-sm text-center m-0">
+        <table className="table table-bordered table-hover table-sm text-center align-middle m-0">
             <thead>
                 <tr>
                     <th className="bg-dark text-light">Insurance name</th>
@@ -13,17 +13,20 @@ const InsurancesTable = ({ insurances }) => {
                 </tr>
             </thead>
             <tbody>
-                {insurances.map((insurance) => (
-                    <tr
-                        key={insurance.id}
-                        onClick={() => navigate(`/insurances/${insurance.id}`)}
-                        style={{ cursor: "pointer" }}
-                    >
-                        <td>{insurance.name}</td>
-                        <td>{insurance.subject}</td>
-                        <td>{insurance.amount}</td>
-                    </tr>
-                ))}
+                {insurances &&
+                    insurances.map((insurance) => (
+                        <tr
+                            key={insurance.id}
+                            onClick={() =>
+                                navigate(`/insurances/${insurance.id}`)
+                            }
+                            style={{ cursor: "pointer" }}
+                        >
+                            <td>{insurance.name}</td>
+                            <td>{insurance.subject}</td>
+                            <td>{insurance.amount}</td>
+                        </tr>
+                    ))}
             </tbody>
         </table>
     );

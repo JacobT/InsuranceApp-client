@@ -15,4 +15,5 @@ const identityErrors = {
         confirmPassword: [],
     }),
 };
+
 export default identityErrors;

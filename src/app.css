@@ -1,0 +1,11 @@
+.narrow-container {
+    max-width: 960px;
+}
+
+.auth-container {
+    max-width: 300px;
+}
+
+.col {
+    min-width: 0;
+}

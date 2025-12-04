@@ -6,14 +6,7 @@ import InsurancesTable from "../../insurances/components/InsurancesTable";
 
 const CustomerDetail = () => {
     const { userState } = useAuthContext();
-    const {
-        id,
-        customer,
-        customerErrors,
-        insurances,
-        insurancesErrors,
-        handleDelete,
-    } = useCustomerDetail();
+    const { id, customer, customerErrors, handleDelete } = useCustomerDetail();
 
     return (
         <div>
@@ -27,9 +20,11 @@ const CustomerDetail = () => {
                                 {customer.firstName} {customer.lastName}
                             </h1>
                             <small>
-                                Email: {customer.email}, Phone: {customer.phone}
+                                Email: {customer.email}
                                 <br />
-                                Address: {customer.street}, {customer.city},
+                                Phone: {customer.phone}
+                                <br />
+                                Address: {customer.street}, {customer.city},{" "}
                                 {customer.postalCode}
                             </small>
                         </div>
@@ -38,7 +33,7 @@ const CustomerDetail = () => {
                                 <div className="col col-auto d-flex flex-column align-items-stretch justify-content-center gap-1">
                                     <Link
                                         to={`/customers/${id}/edit`}
-                                        state={{ customerState: customer }}
+                                        state={{ dataState: customer }}
                                         className="btn btn-primary"
                                     >
                                         Edit
@@ -56,27 +51,23 @@ const CustomerDetail = () => {
                 </div>
             )}
             <hr />
-            {insurancesErrors.general.length > 0 ? (
-                <ErrorMessage error={insurancesErrors.general} />
-            ) : (
-                <div className="container">
-                    <div className="row mb-3">
-                        <div className="col text-center">
-                            <Link
-                                to={"/customers/create"}
-                                className="btn btn-primary disabled"
-                            >
-                                Add new insurance
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <InsurancesTable insurances={insurances} />
-                        </div>
+            <div className="container">
+                <div className="row mb-3">
+                    <div className="col text-center">
+                        <Link
+                            to={"/insurances/create"}
+                            className="btn btn-primary"
+                        >
+                            Add new insurance
+                        </Link>
                     </div>
                 </div>
-            )}
+                <div className="row">
+                    <div className="col">
+                        <InsurancesTable insurances={customer.insurances} />
+                    </div>
+                </div>
+            </div>
             <hr />
         </div>
     );

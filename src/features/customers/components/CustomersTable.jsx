@@ -4,7 +4,7 @@ const CustomersTable = ({ customers }) => {
     const navigate = useNavigate();
 
     return (
-        <table className="table table-bordered table-hover table-sm text-center m-0">
+        <table className="table table-bordered table-hover table-sm text-center align-middle m-0">
             <tbody>
                 {customers.map((customer) => (
                     <tr

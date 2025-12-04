@@ -10,7 +10,7 @@ const AuthenticationForm = ({ mode }) => {
         <>
             <form
                 onSubmit={handleSubmit}
-                className="col-9 col-sm-6 mx-auto mt-5"
+                className="container auth-container mx-auto mt-5"
             >
                 <h1 className="text-center">
                     {mode === "register" ? "Registration" : "Login"}

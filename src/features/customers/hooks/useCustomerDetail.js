@@ -8,17 +8,12 @@ export const useCustomerDetail = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const { apiDelete } = useApi();
-    const [customerErrors, setcustomerErrors] = useState({ general: [] });
+    const [customerErrors, setCustomerErrors] = useState({ general: [] });
 
     const { dataState: customer } = useFetchData({
         url: `/customers/${id}`,
-        externalErrorState: [customerErrors, setcustomerErrors],
+        externalErrorState: [customerErrors, setCustomerErrors],
     });
-
-    const { dataState: insurances, errorsState: insurancesErrors } =
-        useFetchData({
-            url: `/customers/${id}/insurances`,
-        });
 
     const handleDelete = async () => {
         if (confirm("Do you want to delete this customer?")) {
@@ -27,7 +22,7 @@ export const useCustomerDetail = () => {
                 navigate("/customers");
             } catch (error) {
                 const newErrors = await handleError(error);
-                alert(newErrors.general);
+                setCustomerErrors(newErrors);
             }
         }
     };
@@ -36,8 +31,6 @@ export const useCustomerDetail = () => {
         id,
         customer,
         customerErrors,
-        insurances,
-        insurancesErrors,
         handleDelete,
     };
 };

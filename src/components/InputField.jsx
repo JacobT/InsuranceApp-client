@@ -46,7 +46,7 @@ const InputField = ({
                     rows={rows}
                     placeholder={placeholder}
                     onChange={handleChange}
-                    value={value}
+                    value={value || ""}
                     {...rest}
                 />
             ) : (
@@ -60,7 +60,7 @@ const InputField = ({
                     name={name}
                     placeholder={placeholder}
                     onChange={handleChange}
-                    value={value}
+                    value={value || ""}
                     {...rest}
                 />
             )}

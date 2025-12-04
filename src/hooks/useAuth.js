@@ -15,8 +15,8 @@ import { ApiRequestError } from "../utils/apiRequest";
 
 const USER_ROLES =
     "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
-const TOKEN_KEY = "jwtToken";
-const REFRESH_KEY = "refreshToken";
+const ACCESS_TOKEN_KEY = "jwtToken";
+const REFRESH_TOKEN_KEY = "refreshToken";
 
 export const useAuth = () => {
     const createEmptyUser = (status = "unauthenticated") => ({
@@ -41,9 +41,9 @@ export const useAuth = () => {
     }, []);
 
     const saveTokens = (newTokens) => {
-        saveRefreshToken(newTokens[REFRESH_KEY]);
+        saveRefreshToken(newTokens[REFRESH_TOKEN_KEY]);
 
-        const userClaims = decodeJwt(newTokens[TOKEN_KEY]);
+        const userClaims = decodeJwt(newTokens[ACCESS_TOKEN_KEY]);
         setUser({
             email: userClaims.email,
             roles: Array.isArray(userClaims[USER_ROLES])
@@ -53,11 +53,11 @@ export const useAuth = () => {
         });
 
         setAccessToken({
-            token: newTokens[TOKEN_KEY],
+            token: newTokens[ACCESS_TOKEN_KEY],
             expiration: userClaims.exp,
         });
 
-        return newTokens[TOKEN_KEY];
+        return newTokens[ACCESS_TOKEN_KEY];
     };
 
     const isAccessTokenExpired = () => {
