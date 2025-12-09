@@ -10,7 +10,7 @@ export const useCustomerDetail = () => {
     const { apiDelete } = useApi();
     const [customerErrors, setCustomerErrors] = useState({ general: [] });
 
-    const { dataState: customer } = useFetchData({
+    const { data: customer } = useFetchData({
         url: `/customers/${id}`,
         externalErrorState: [customerErrors, setCustomerErrors],
     });

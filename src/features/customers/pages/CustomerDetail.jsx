@@ -33,7 +33,7 @@ const CustomerDetail = () => {
                                 <div className="col col-auto d-flex flex-column align-items-stretch justify-content-center gap-1">
                                     <Link
                                         to={`/customers/${id}/edit`}
-                                        state={{ dataState: customer }}
+                                        state={{ formData: customer }}
                                         className="btn btn-primary"
                                     >
                                         Edit
@@ -56,6 +56,7 @@ const CustomerDetail = () => {
                     <div className="col text-center">
                         <Link
                             to={"/insurances/create"}
+                            state={{ formData: { insuredId: customer.id } }}
                             className="btn btn-primary"
                         >
                             Add new insurance

@@ -1,16 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
-import { handleError } from "../utils/handleError";
-import identityErrors from "../utils/errors/identityErrors";
+import { createEmptyErrorsState, handleError } from "../utils/handleError";
 
 export const useAuthForm = (mode) => {
     const { register, login } = useAuthContext();
     const navigate = useNavigate();
 
-    const [errorsState, setErrors] = useState(
-        identityErrors.createEmptyErrorsState()
-    );
+    const [errors, setErrors] = useState(createEmptyErrorsState());
     const [formState, setForm] = useState({
         email: "",
         password: "",
@@ -26,7 +23,7 @@ export const useAuthForm = (mode) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setErrors(identityErrors.createEmptyErrorsState());
+        setErrors(createEmptyErrorsState());
         const { confirmPassword, ...payload } = formState;
         if (mode === "register" && confirmPassword != payload.password) {
             setErrors((prev) => ({
@@ -45,10 +42,10 @@ export const useAuthForm = (mode) => {
             }
             navigate("/");
         } catch (error) {
-            const newErrors = await handleError(error, identityErrors);
+            const newErrors = await handleError(error);
             setErrors(newErrors);
         }
     };
 
-    return { formState, errorsState, handleChange, handleSubmit };
+    return { formState, errors, handleChange, handleSubmit };
 };

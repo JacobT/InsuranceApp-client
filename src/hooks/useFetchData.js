@@ -1,45 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useApi } from "./useApi";
-import { handleError } from "../utils/handleError";
+import { createEmptyErrorsState, handleError } from "../utils/handleError";
 
 export const useFetchData = ({
     url,
     dependencies = [],
-    customErrors = null,
     externalDataState = null,
     externalErrorState = null,
     enabled = true,
 }) => {
     const { apiGet } = useApi();
-    const [dataState, setData] = externalDataState || useState([]);
-    const [errorsState, setErrors] =
-        externalErrorState ||
-        useState(
-            customErrors
-                ? customErrors.createEmptyErrorState()
-                : { general: [] }
-        );
+    const [data, setData] = externalDataState || useState([]);
+    const [errors, setErrors] =
+        externalErrorState || useState(createEmptyErrorsState());
+
+    const mounted = useRef(true);
 
     useEffect(() => {
-        let isMounted = true;
+        mounted.current = true;
+        if (!enabled) return;
 
         const getData = async () => {
             try {
                 const response = await apiGet(url);
-                if (response) {
-                    const data = await response.json();
-                    if (isMounted) setData(data);
+                const data = await response.json();
+                if (mounted.current) {
+                    setData(data);
                 }
             } catch (error) {
-                if (!isMounted) return;
-                const newErrors = await handleError(error, customErrors);
+                if (!mounted.current) return;
+
+                const newErrors = await handleError(error);
                 setErrors(newErrors);
             }
         };
-        if (enabled) getData();
+        getData();
 
-        return () => (isMounted = false);
-    }, dependencies);
+        return () => (mounted.current = false);
+    }, [url, enabled, ...dependencies]);
 
-    return { dataState, setData, errorsState, setErrors };
+    return { data, setData, errors, setErrors };
 };

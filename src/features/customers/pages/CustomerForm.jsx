@@ -1,19 +1,15 @@
 import { useForm } from "../../../hooks/useForm";
 import ErrorMessage from "../../../components/ErrorMessage";
 import InputField from "../../../components/InputField";
-import customerErrors from "../../../utils/errors/customerErrors";
 
 const CustomerForm = () => {
     const {
         mode,
-        dataState: customerState,
-        errorsState,
+        data: customerState,
+        errors: customerErrors,
         handleChange,
         handleSubmit,
-    } = useForm({
-        url: "/customers",
-        customErrors: customerErrors,
-    });
+    } = useForm("/customers");
 
     return (
         <>
@@ -21,8 +17,8 @@ const CustomerForm = () => {
                 {mode === "create" ? "Create" : "Edit"} customer:
             </h1>
             <hr />
-            {errorsState.general.length > 0 && (
-                <ErrorMessage error={errorsState.general} />
+            {customerErrors.general.length > 0 && (
+                <ErrorMessage error={customerErrors.general} />
             )}
 
             <form className="container" onSubmit={handleSubmit}>
@@ -35,7 +31,7 @@ const CustomerForm = () => {
                             type={"text"}
                             handleChange={handleChange}
                             value={customerState.firstName}
-                            error={errorsState.firstName}
+                            error={customerErrors.firstName}
                         />
 
                         <InputField
@@ -45,7 +41,7 @@ const CustomerForm = () => {
                             type={"text"}
                             handleChange={handleChange}
                             value={customerState.lastName}
-                            error={errorsState.lastName}
+                            error={customerErrors.lastName}
                         />
 
                         <InputField
@@ -55,7 +51,7 @@ const CustomerForm = () => {
                             type={"email"}
                             handleChange={handleChange}
                             value={customerState.email}
-                            error={errorsState.email}
+                            error={customerErrors.email}
                         />
 
                         <InputField
@@ -65,7 +61,7 @@ const CustomerForm = () => {
                             type={"text"}
                             handleChange={handleChange}
                             value={customerState.phone}
-                            error={errorsState.phone}
+                            error={customerErrors.phone}
                         />
                     </div>
                     <div className="col-6 d-flex flex-column justify-content-between">
@@ -77,7 +73,7 @@ const CustomerForm = () => {
                                 type={"text"}
                                 handleChange={handleChange}
                                 value={customerState.street}
-                                error={errorsState.street}
+                                error={customerErrors.street}
                             />
                             <InputField
                                 required={true}
@@ -86,7 +82,7 @@ const CustomerForm = () => {
                                 type={"text"}
                                 handleChange={handleChange}
                                 value={customerState.city}
-                                error={errorsState.city}
+                                error={customerErrors.city}
                             />
                             <InputField
                                 required={true}
@@ -95,7 +91,7 @@ const CustomerForm = () => {
                                 type={"text"}
                                 handleChange={handleChange}
                                 value={customerState.postalCode}
-                                error={errorsState.postalCode}
+                                error={customerErrors.postalCode}
                             />
                         </div>
                         <div className="d-flex justify-content-end">

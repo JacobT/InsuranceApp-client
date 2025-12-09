@@ -25,7 +25,7 @@ const InsuranceDetail = () => {
                                 <div className="col col-auto d-flex flex-column align-items-stretch justify-content-center gap-1">
                                     <Link
                                         to={`/insurances/${id}/edit`}
-                                        state={{ dataState: insurance }}
+                                        state={{ formData: insurance }}
                                         className="btn btn-primary"
                                     >
                                         Edit
@@ -41,27 +41,40 @@ const InsuranceDetail = () => {
                             )}
                     </div>
                     <hr />
-                    <div className="row">
-                        <div className="col">
-                            <h5>Valid from:</h5>
-                            <p>{dateStringFormatter(insurance.validFrom)}</p>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <h5>Valid from:</h5>
+                                <p>
+                                    {dateStringFormatter(
+                                        insurance.validFrom,
+                                        true
+                                    )}
+                                </p>
+                            </div>
+                            <div className="col">
+                                <h5>Valid to:</h5>
+                                <p>
+                                    {dateStringFormatter(
+                                        insurance.validTo,
+                                        true
+                                    )}
+                                </p>
+                            </div>
                         </div>
-                        <div className="col">
-                            <h5>Valid to:</h5>
-                            <p>{dateStringFormatter(insurance.validTo)}</p>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <h5>Subject:</h5>
-                            <p>{insurance.subject}</p>
-                            <h5>Amount:</h5>
-                            <p>{insurance.amount}</p>
+                        <div className="row">
+                            <div className="col">
+                                <h5>Subject:</h5>
+                                <p>{insurance.subject}</p>
+                                <h5>Amount:</h5>
+                                <p>{insurance.amount}</p>
+                            </div>
                         </div>
                     </div>
                     {insurance.claims && insurance.claims.length > 0 && (
                         <>
                             <hr />
+                            <h2 className="mb-3">Insurance claims:</h2>
                             <div className="row">
                                 <div className="col">
                                     <ClaimsTable claims={insurance.claims} />

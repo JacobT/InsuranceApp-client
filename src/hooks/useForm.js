@@ -1,33 +1,30 @@
 import { useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useApi } from "./useApi";
-import { handleError } from "../utils/handleError";
+import { createEmptyErrorsState, handleError } from "../utils/handleError";
 import { useFetchData } from "./useFetchData";
 
-export const useForm = ({ url, customErrors = null }) => {
+export const useForm = (url) => {
     const navigate = useNavigate();
     const { apiPost, apiPut } = useApi();
     const { id } = useParams();
     const { state } = useLocation();
-    const mode = state?.dataState || id ? "edit" : "create";
+    const mode = id ? "edit" : "create";
 
-    const [dataState, setDataState] = useState(state?.dataState ?? {});
-    const [errorsState, setErrorsState] = useState(
-        customErrors.createEmptyErrorsState()
-    );
+    const [data, setData] = useState(state?.formData ?? {});
+    const [errors, setErrors] = useState(createEmptyErrorsState());
 
     useFetchData({
         url: `${url}/${id}`,
-        externalDataState: [dataState, setDataState],
-        externalErrorState: [errorsState, setErrorsState],
-        customErrors,
+        externalDataState: [data, setData],
+        externalErrorState: [errors, setErrors],
         enabled: mode === "edit",
     });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setDataState((prev) => ({ ...prev, [name]: value }));
-        setErrorsState((prev) => ({ ...prev, [name]: [], general: [] }));
+        setData((prev) => ({ ...prev, [name]: value }));
+        setErrors((prev) => ({ ...prev, [name]: [], general: [] }));
     };
 
     const handleSubmit = async (e) => {
@@ -36,22 +33,22 @@ export const useForm = ({ url, customErrors = null }) => {
         try {
             let response;
             if (mode === "create") {
-                response = await apiPost(url, dataState);
+                response = await apiPost(url, data);
             } else {
-                response = await apiPut(`${url}/${id}`, dataState);
+                response = await apiPut(`${url}/${id}`, data);
             }
             const responseData = await response.json();
             navigate(`${url}/${responseData.id}`);
         } catch (error) {
-            const newErrors = await handleError(error, customErrors);
-            setErrorsState(newErrors);
+            const newErrors = await handleError(error);
+            setErrors(newErrors);
         }
     };
 
     return {
         mode,
-        dataState,
-        errorsState,
+        data,
+        errors,
         handleChange,
         handleSubmit,
     };

@@ -4,7 +4,7 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import { useFetchData } from "../../../hooks/useFetchData";
 
 const CustomersIndex = () => {
-    const { dataState: customers, errorsState: errors } = useFetchData({
+    const { data: customers, errors: customersErrors } = useFetchData({
         url: "/customers",
     });
 
@@ -24,8 +24,8 @@ const CustomersIndex = () => {
                 </div>
             </div>
             <hr />
-            {errors.general.length > 0 ? (
-                <ErrorMessage error={errors.general} />
+            {customersErrors.general.length > 0 ? (
+                <ErrorMessage error={customersErrors.general} />
             ) : (
                 <div className="container">
                     <div className="row mb-3">

@@ -3,8 +3,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import { useAuthForm } from "../hooks/useAuthForm";
 
 const AuthenticationForm = ({ mode }) => {
-    const { formState, errorsState, handleChange, handleSubmit } =
-        useAuthForm(mode);
+    const { formState, errors, handleChange, handleSubmit } = useAuthForm(mode);
 
     return (
         <>
@@ -16,8 +15,8 @@ const AuthenticationForm = ({ mode }) => {
                     {mode === "register" ? "Registration" : "Login"}
                 </h1>
 
-                {errorsState.general.length > 0 && (
-                    <ErrorMessage error={errorsState.general} />
+                {errors.general.length > 0 && (
+                    <ErrorMessage error={errors.general} />
                 )}
 
                 <InputField
@@ -28,7 +27,7 @@ const AuthenticationForm = ({ mode }) => {
                     placeholder={"example@email.com"}
                     handleChange={handleChange}
                     value={formState.email}
-                    error={errorsState.email}
+                    error={errors.email}
                 />
 
                 <InputField
@@ -44,7 +43,7 @@ const AuthenticationForm = ({ mode }) => {
                     minLength={6}
                     handleChange={handleChange}
                     value={formState.password}
-                    error={errorsState.password}
+                    error={errors.password}
                 />
 
                 {mode === "register" && (
@@ -59,7 +58,7 @@ const AuthenticationForm = ({ mode }) => {
                         minLength={6}
                         handleChange={handleChange}
                         value={formState.confirmPassword}
-                        error={errorsState.confirmPassword}
+                        error={errors.confirmPassword}
                     />
                 )}
 

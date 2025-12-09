@@ -9,3 +9,33 @@
 .col {
     min-width: 0;
 }
+
+/* .btn-primary {
+  --bs-btn-color: #000;
+  --bs-btn-bg: rgba(var(--bs-primary-rgb), 0.5);
+  --bs-btn-border-color: rgba(var(--bs-primary-rgb), 0.5);
+  --bs-btn-hover-bg: rgba(var(--bs-primary-rgb), 0.7);
+  --bs-btn-hover-border-color: rgba(var(--bs-primary-rgb), 0.7);
+  --bs-btn-active-bg: rgba(var(--bs-primary-rgb), 0.8);
+  --bs-btn-active-border-color: rgba(var(--bs-primary-rgb), 0.8);
+}
+
+.btn-success {
+  --bs-btn-color: #000;
+  --bs-btn-bg: rgba(var(--bs-success-rgb), 0.5);
+  --bs-btn-border-color: rgba(var(--bs-success-rgb), 0.5);
+  --bs-btn-hover-bg: rgba(var(--bs-success-rgb), 0.7);
+  --bs-btn-hover-border-color: rgba(var(--bs-success-rgb), 0.7);
+  --bs-btn-active-bg: rgba(var(--bs-success-rgb), 0.8);
+  --bs-btn-active-border-color: rgba(var(--bs-success-rgb), 0.8);
+}
+
+.btn-danger {
+  --bs-btn-color: #000;
+  --bs-btn-bg: rgba(var(--bs-danger-rgb), 0.5);
+  --bs-btn-border-color: rgba(var(--bs-danger-rgb), 0.5);
+  --bs-btn-hover-bg: rgba(var(--bs-danger-rgb), 0.7);
+  --bs-btn-hover-border-color: rgba(var(--bs-danger-rgb), 0.7);
+  --bs-btn-active-bg: rgba(var(--bs-danger-rgb), 0.8);
+  --bs-btn-active-border-color: rgba(var(--bs-danger-rgb), 0.8);
+} */
