@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useApi } from "../../../hooks/useApi";
 import { handleError } from "../../../utils/handleError";
@@ -8,12 +7,12 @@ export const useCustomerDetail = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const { apiDelete } = useApi();
-    const [customerErrors, setCustomerErrors] = useState({ general: [] });
 
-    const { data: customer } = useFetchData({
-        url: `/customers/${id}`,
-        externalErrorState: [customerErrors, setCustomerErrors],
-    });
+    const {
+        data: customer,
+        errors: customerErrors,
+        setErrors: setCustomerErrors,
+    } = useFetchData({ url: `/customers/${id}` });
 
     const handleDelete = async () => {
         if (confirm("Do you want to delete this customer?")) {

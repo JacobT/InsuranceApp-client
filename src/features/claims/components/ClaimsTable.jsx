@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { dateStringFormatter } from "../../../utils/dateStringFormatter";
 
 const ClaimsTable = ({ claims }) => {
     const navigate = useNavigate();
@@ -22,8 +23,8 @@ const ClaimsTable = ({ claims }) => {
                     >
                         <td>{claim.description}</td>
                         <td>{claim.amount}</td>
-                        <td>{claim.createdAt}</td>
-                        <td>{claim.resolvedAt}</td>
+                        <td>{dateStringFormatter(claim.createdAt, true)}</td>
+                        <td>{dateStringFormatter(claim.resolvedAt, true)}</td>
                     </tr>
                 ))}
             </tbody>

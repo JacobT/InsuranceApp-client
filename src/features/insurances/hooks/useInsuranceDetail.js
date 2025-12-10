@@ -1,9 +1,12 @@
 import { useFetchData } from "../../../hooks/useFetchData";
 import { useNavigate, useParams } from "react-router-dom";
+import { handleError } from "../../../utils/handleError";
+import { useApi } from "../../../hooks/useApi";
 
 export const useInsuranceDetail = () => {
     const navigate = useNavigate();
     const { id } = useParams();
+    const { apiDelete } = useApi();
 
     const {
         data: insurance,
@@ -14,7 +17,7 @@ export const useInsuranceDetail = () => {
     const handleDelete = async () => {
         if (confirm("Do you want to delete this insurance?")) {
             try {
-                await apiDelete(`/insurance/${id}`);
+                await apiDelete(`/insurances/${id}`);
                 navigate(`/customers/${insurance.insuredId}`);
             } catch (error) {
                 const newErrors = await handleError(error);

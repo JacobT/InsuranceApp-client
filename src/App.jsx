@@ -9,6 +9,7 @@ import CustomerDetail from "./features/customers/pages/CustomerDetail";
 import CustomerForm from "./features/customers/pages/CustomerForm";
 import InsuranceDetail from "./features/insurances/pages/InsuranceDetail";
 import InsuranceForm from "./features/insurances/pages/InsuranceForm.jsx";
+import ClaimDetail from "./features/claims/pages/ClaimDetail.jsx";
 
 const App = () => {
     return (
@@ -27,6 +28,12 @@ const App = () => {
                         <Route path=":id" element={<InsuranceDetail />} />
                         <Route path="create" element={<InsuranceForm />} />
                         <Route path=":id/edit" element={<InsuranceForm />} />
+                    </Route>
+
+                    <Route path="/claims">
+                        <Route path=":id" element={<ClaimDetail />} />
+                        {/* <Route path="create" element={<ClaimForm />} />
+                        <Route path=":id/edit" element={<ClaimForm />} /> */}
                     </Route>
 
                     <Route
