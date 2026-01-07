@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../../../contexts/AuthContext";
-import { useCustomerDetail } from "../hooks/useCustomerDetail";
-import ErrorMessage from "../../../components/ErrorMessage";
-import InsurancesTable from "../../insurances/components/InsurancesTable";
+import { useAuthContext } from "../../contexts/AuthContext";
+import { useDetail } from "../../hooks/useDetail";
+import ErrorMessage from "../../components/ErrorMessage";
+import InsurancesTable from "../../components/InsurancesTable";
 
 const CustomerDetail = () => {
     const { userState } = useAuthContext();
-    const { id, customer, customerErrors, handleDelete } = useCustomerDetail();
+    const {
+        id,
+        data: customer,
+        errors: customerErrors,
+        handleDelete,
+    } = useDetail("/customers");
 
     return (
         <div>

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { dateStringFormatter } from "../../../utils/dateStringFormatter";
+import { dateStringFormatter } from "../utils/dateStringFormatter";
 
 const ClaimsTable = ({ claims }) => {
     const navigate = useNavigate();

@@ -1,7 +1,7 @@
-import { useForm } from "../../../hooks/useForm";
-import { dateStringFormatter } from "../../../utils/dateStringFormatter";
-import InputField from "../../../components/InputField";
-import ErrorMessage from "../../../components/ErrorMessage";
+import { useForm } from "../../hooks/useForm";
+import { dateStringFormatter } from "../../utils/dateStringFormatter";
+import InputField from "../../components/InputField";
+import ErrorMessage from "../../components/ErrorMessage";
 
 const InsuranceForm = () => {
     const {
@@ -36,7 +36,7 @@ const InsuranceForm = () => {
                             placeholder={"Type of insurance"}
                             value={insurance.name || ""}
                             handleChange={handleChange}
-                            error={insuranceErrors?.name}
+                            error={insuranceErrors.name}
                         />
                     </div>
                 </div>
@@ -51,7 +51,7 @@ const InsuranceForm = () => {
                             placeholder={"Subject of insurance"}
                             value={insurance.subject || ""}
                             handleChange={handleChange}
-                            error={insuranceErrors?.subject}
+                            error={insuranceErrors.subject}
                         />
 
                         <InputField
@@ -61,10 +61,11 @@ const InsuranceForm = () => {
                             name={"validFrom"}
                             placeholder={"Začátek pojištění"}
                             value={
-                                dateStringFormatter(insurance.validFrom) || ""
+                                dateStringFormatter(insurance.validFrom) ||
+                                dateStringFormatter(Date.now())
                             }
                             handleChange={handleChange}
-                            error={insuranceErrors?.validFrom}
+                            error={insuranceErrors.validFrom}
                         />
                     </div>
                     <div className="col">
@@ -76,7 +77,7 @@ const InsuranceForm = () => {
                             placeholder={"Insured amount"}
                             value={insurance.amount || ""}
                             handleChange={handleChange}
-                            error={insuranceErrors?.amount}
+                            error={insuranceErrors.amount}
                         />
 
                         <InputField
@@ -86,7 +87,7 @@ const InsuranceForm = () => {
                             name={"validTo"}
                             value={dateStringFormatter(insurance.validTo) || ""}
                             handleChange={handleChange}
-                            error={insuranceErrors?.validTo}
+                            error={insuranceErrors.validTo}
                         />
                     </div>
                 </div>

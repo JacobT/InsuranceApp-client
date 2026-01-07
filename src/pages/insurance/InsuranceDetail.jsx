@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
-import { useInsuranceDetail } from "../hooks/useInsuranceDetail";
-import { useAuthContext } from "../../../contexts/AuthContext";
-import { dateStringFormatter } from "../../../utils/dateStringFormatter";
-import ErrorMessage from "../../../components/ErrorMessage";
-import ClaimsTable from "../../claims/components/ClaimsTable";
+import { useDetail } from "../../hooks/useDetail";
+import { useAuthContext } from "../../contexts/AuthContext";
+import { dateStringFormatter } from "../../utils/dateStringFormatter";
+import ErrorMessage from "../../components/ErrorMessage";
+import ClaimsTable from "../../components/ClaimsTable";
 
 const InsuranceDetail = () => {
     const { userState } = useAuthContext();
-    const { id, insurance, insuranceErrors, handleDelete } =
-        useInsuranceDetail();
+    const {
+        id,
+        data: insurance,
+        errors: insuranceErrors,
+        handleDelete,
+    } = useDetail("/insurances");
 
     return (
         <div>

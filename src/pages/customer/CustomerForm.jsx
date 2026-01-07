@@ -1,11 +1,11 @@
-import { useForm } from "../../../hooks/useForm";
-import ErrorMessage from "../../../components/ErrorMessage";
-import InputField from "../../../components/InputField";
+import { useForm } from "../../hooks/useForm";
+import ErrorMessage from "../../components/ErrorMessage";
+import InputField from "../../components/InputField";
 
 const CustomerForm = () => {
     const {
         mode,
-        data: customerState,
+        data: customer,
         errors: customerErrors,
         handleChange,
         handleSubmit,
@@ -30,7 +30,7 @@ const CustomerForm = () => {
                             label={"First name:"}
                             type={"text"}
                             handleChange={handleChange}
-                            value={customerState.firstName}
+                            value={customer.firstName || ""}
                             error={customerErrors.firstName}
                         />
 
@@ -40,7 +40,7 @@ const CustomerForm = () => {
                             label={"Last name:"}
                             type={"text"}
                             handleChange={handleChange}
-                            value={customerState.lastName}
+                            value={customer.lastName || ""}
                             error={customerErrors.lastName}
                         />
 
@@ -50,7 +50,7 @@ const CustomerForm = () => {
                             label={"Email:"}
                             type={"email"}
                             handleChange={handleChange}
-                            value={customerState.email}
+                            value={customer.email || ""}
                             error={customerErrors.email}
                         />
 
@@ -60,7 +60,7 @@ const CustomerForm = () => {
                             label={"Phone number:"}
                             type={"text"}
                             handleChange={handleChange}
-                            value={customerState.phone}
+                            value={customer.phone || ""}
                             error={customerErrors.phone}
                         />
                     </div>
@@ -72,7 +72,7 @@ const CustomerForm = () => {
                                 label={"Street:"}
                                 type={"text"}
                                 handleChange={handleChange}
-                                value={customerState.street}
+                                value={customer.street || ""}
                                 error={customerErrors.street}
                             />
                             <InputField
@@ -81,7 +81,7 @@ const CustomerForm = () => {
                                 label={"City:"}
                                 type={"text"}
                                 handleChange={handleChange}
-                                value={customerState.city}
+                                value={customer.city || ""}
                                 error={customerErrors.city}
                             />
                             <InputField
@@ -90,7 +90,7 @@ const CustomerForm = () => {
                                 label={"Postal Code:"}
                                 type={"text"}
                                 handleChange={handleChange}
-                                value={customerState.postalCode}
+                                value={customer.postalCode || ""}
                                 error={customerErrors.postalCode}
                             />
                         </div>

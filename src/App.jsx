@@ -4,12 +4,12 @@ import "./app.css";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import AuthenticationForm from "./pages/AuthenticationForm";
-import CustomersIndex from "./features/customers/pages/CustomersIndex";
-import CustomerDetail from "./features/customers/pages/CustomerDetail";
-import CustomerForm from "./features/customers/pages/CustomerForm";
-import InsuranceDetail from "./features/insurances/pages/InsuranceDetail";
-import InsuranceForm from "./features/insurances/pages/InsuranceForm.jsx";
-import ClaimDetail from "./features/claims/pages/ClaimDetail.jsx";
+import CustomersIndex from "./pages/customer/CustomersIndex";
+import CustomerDetail from "./pages/customer/CustomerDetail";
+import CustomerForm from "./pages/customer/CustomerForm";
+import InsuranceDetail from "./pages/insurance/InsuranceDetail";
+import InsuranceForm from "./pages/insurance/InsuranceForm.jsx";
+import ClaimDetail from "./pages/claim/ClaimDetail.jsx";
 
 const App = () => {
     return (

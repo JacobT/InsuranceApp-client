@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../../../contexts/AuthContext";
-import { dateStringFormatter } from "../../../utils/dateStringFormatter";
-import ErrorMessage from "../../../components/ErrorMessage";
-import { useClaimDetail } from "../hooks/useClaimDetail";
+import { useAuthContext } from "../../contexts/AuthContext";
+import { dateStringFormatter } from "../../utils/dateStringFormatter";
+import { useDetail } from "../../hooks/useDetail";
+import ErrorMessage from "../../components/ErrorMessage";
 
 const ClaimDetail = () => {
     const { userState } = useAuthContext();
-    const { id, claim, claimErrors, handleDelete } = useClaimDetail();
+    const {
+        id,
+        data: claim,
+        errors: claimErrors,
+        handleDelete,
+    } = useDetail("/claims");
 
     return (
         <div>
