@@ -1,6 +1,6 @@
-import { useForm } from "../../hooks/useForm";
-import ErrorMessage from "../../components/ErrorMessage";
-import InputField from "../../components/InputField";
+import { useForm } from "@/hooks/useForm";
+import ErrorMessage from "@/components/ErrorMessage";
+import InputField from "@/components/InputField";
 
 const CustomerForm = () => {
     const {

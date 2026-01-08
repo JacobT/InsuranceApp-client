@@ -1,15 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./app.css";
-import MainLayout from "./layouts/MainLayout";
-import Home from "./pages/Home";
-import AuthenticationForm from "./pages/AuthenticationForm";
-import CustomersIndex from "./pages/customer/CustomersIndex";
-import CustomerDetail from "./pages/customer/CustomerDetail";
-import CustomerForm from "./pages/customer/CustomerForm";
-import InsuranceDetail from "./pages/insurance/InsuranceDetail";
-import InsuranceForm from "./pages/insurance/InsuranceForm.jsx";
-import ClaimDetail from "./pages/claim/ClaimDetail.jsx";
+import "@/app.css";
+import MainLayout from "@/layouts/MainLayout";
+import Home from "@/pages/Home";
+import AuthenticationForm from "@/pages/AuthenticationForm";
+import CustomersIndex from "@/pages/customer/CustomersIndex";
+import CustomerDetail from "@/pages/customer/CustomerDetail";
+import CustomerForm from "@/pages/customer/CustomerForm";
+import InsuranceDetail from "@/pages/insurance/InsuranceDetail";
+import InsuranceForm from "@/pages/insurance/InsuranceForm.jsx";
+import ClaimDetail from "@/pages/claim/ClaimDetail.jsx";
+import ClaimForm from "@/pages/claim/ClaimForm.jsx";
 
 const App = () => {
     return (
@@ -32,8 +33,8 @@ const App = () => {
 
                     <Route path="/claims">
                         <Route path=":id" element={<ClaimDetail />} />
-                        {/* <Route path="create" element={<ClaimForm />} />
-                        <Route path=":id/edit" element={<ClaimForm />} /> */}
+                        <Route path="create" element={<ClaimForm />} />
+                        <Route path=":id/edit" element={<ClaimForm />} />
                     </Route>
 
                     <Route

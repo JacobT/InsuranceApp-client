@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { useAuthContext } from "../contexts/AuthContext";
+import { useAuthContext } from "@/contexts/AuthContext";
 
 const NavLink = (to, value, handleClick = () => {}) => {
     const route = useLocation().pathname;

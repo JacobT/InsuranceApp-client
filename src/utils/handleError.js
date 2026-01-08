@@ -1,6 +1,6 @@
-import { ApiRequestError } from "./apiRequest";
-import { IGNORE_ERROR } from "./errors/errorConstants";
-import identityErrorsMap from "./errors/identityErrorsMap";
+import { ApiRequestError } from "@/utils/apiRequest";
+import { IGNORE_ERROR } from "@/utils/errors/errorConstants";
+import identityErrorsMap from "@/utils/errors/identityErrorsMap";
 
 export const createEmptyErrorsState = () => ({ general: [] });
 

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { useDetail } from "../../hooks/useDetail";
-import { useAuthContext } from "../../contexts/AuthContext";
-import { dateStringFormatter } from "../../utils/dateStringFormatter";
-import ErrorMessage from "../../components/ErrorMessage";
-import ClaimsTable from "../../components/ClaimsTable";
+import { useDetail } from "@/hooks/useDetail";
+import { useAuthContext } from "@/contexts/AuthContext";
+import { dateStringFormatter } from "@/utils/dateStringFormatter";
+import ErrorMessage from "@/components/ErrorMessage";
+import ClaimsTable from "@/components/ClaimsTable";
 
 const InsuranceDetail = () => {
     const { userState } = useAuthContext();

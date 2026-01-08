@@ -1,4 +1,4 @@
-import { IGNORE_ERROR } from "./errorConstants";
+import { IGNORE_ERROR } from "@/utils/errors/errorConstants";
 
 const identityErrorsMap = {
     DuplicateUserName: IGNORE_ERROR,

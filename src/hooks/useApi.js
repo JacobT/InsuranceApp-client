@@ -1,6 +1,6 @@
-import { useAuthContext } from "../contexts/AuthContext";
+import { useAuthContext } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { apiRequest, ApiRequestError } from "../utils/apiRequest";
+import { apiRequest, ApiRequestError } from "@/utils/apiRequest";
 
 export const useApi = () => {
     const navigate = useNavigate();

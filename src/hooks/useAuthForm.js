@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../contexts/AuthContext";
-import { createEmptyErrorsState, handleError } from "../utils/handleError";
+import { useAuthContext } from "@/contexts/AuthContext";
+import { createEmptyErrorsState, handleError } from "@/utils/handleError";
 
 export const useAuthForm = (mode) => {
     const { register, login } = useAuthContext();

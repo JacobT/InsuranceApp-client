@@ -1,6 +1,6 @@
-import InputField from "../components/InputField";
-import ErrorMessage from "../components/ErrorMessage";
-import { useAuthForm } from "../hooks/useAuthForm";
+import InputField from "@/components/InputField";
+import ErrorMessage from "@/components/ErrorMessage";
+import { useAuthForm } from "@/hooks/useAuthForm";
 
 const AuthenticationForm = ({ mode }) => {
     const { formState, errors, handleChange, handleSubmit } = useAuthForm(mode);

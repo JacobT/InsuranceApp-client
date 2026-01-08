@@ -1,4 +1,4 @@
-import { apiRequest } from "../utils/apiRequest";
+import { apiRequest } from "@/utils/apiRequest";
 
 export const registerService = async (payload) => {
     const body = JSON.stringify(payload);

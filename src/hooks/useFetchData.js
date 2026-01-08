@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useApi } from "./useApi";
-import { createEmptyErrorsState, handleError } from "../utils/handleError";
+import { useApi } from "@/hooks/useApi";
+import { createEmptyErrorsState, handleError } from "@/utils/handleError";
 
 export const useFetchData = ({
     url,

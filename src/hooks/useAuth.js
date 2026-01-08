@@ -4,14 +4,14 @@ import {
     saveRefreshToken,
     clearRefreshToken,
     decodeJwt,
-} from "../utils/tokens";
+} from "@/utils/tokens";
 import {
     registerService,
     loginService,
     refreshService,
     logoutService,
-} from "../services/authService";
-import { ApiRequestError } from "../utils/apiRequest";
+} from "@/services/authService";
+import { ApiRequestError } from "@/utils/apiRequest";
 
 const USER_ROLES =
     "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";

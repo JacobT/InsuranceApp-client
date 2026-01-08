@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import CustomersTable from "../../components/CustomersTable";
-import ErrorMessage from "../../components/ErrorMessage";
-import { useFetchData } from "../../hooks/useFetchData";
+import CustomersTable from "@/components/CustomersTable";
+import ErrorMessage from "@/components/ErrorMessage";
+import { useFetchData } from "@/hooks/useFetchData";
 
 const CustomersIndex = () => {
     const { data: customers, errors: customersErrors } = useFetchData({

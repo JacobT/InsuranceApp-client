@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useFetchData } from "./useFetchData";
-import { handleError } from "../utils/handleError";
-import { useApi } from "./useApi";
+import { useFetchData } from "@/hooks/useFetchData";
+import { handleError } from "@/utils/handleError";
+import { useApi } from "@/hooks/useApi";
 
 export const useDetail = (url) => {
     const navigate = useNavigate();

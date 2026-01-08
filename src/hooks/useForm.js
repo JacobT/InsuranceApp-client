@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
-import { useApi } from "./useApi";
-import { createEmptyErrorsState, handleError } from "../utils/handleError";
-import { useFetchData } from "./useFetchData";
+import { useApi } from "@/hooks/useApi";
+import { createEmptyErrorsState, handleError } from "@/utils/handleError";
+import { useFetchData } from "@/hooks/useFetchData";
 
 export const useForm = (url) => {
     const navigate = useNavigate();
