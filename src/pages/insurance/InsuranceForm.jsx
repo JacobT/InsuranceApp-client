@@ -2,7 +2,7 @@ import { useForm } from "@/hooks/useForm";
 import { dateStringFormatter } from "@/utils/dateStringFormatter";
 import InputField from "@/components/InputField";
 import ErrorMessage from "@/components/ErrorMessage";
-import BackButton from "../../components/BackButton";
+import BackButton from "@/components/BackButton";
 
 const InsuranceForm = () => {
     const {

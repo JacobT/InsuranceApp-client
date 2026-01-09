@@ -1,12 +1,10 @@
-import { Link } from "react-router-dom";
-import { useAuthContext } from "@/contexts/AuthContext";
 import { dateStringFormatter } from "@/utils/dateStringFormatter";
 import { useDetail } from "@/hooks/useDetail";
 import ErrorMessage from "@/components/ErrorMessage";
-import BackButton from "../../components/BackButton";
+import BackButton from "@/components/BackButton";
+import DetailActionButtons from "@/components/DetailActionButtons";
 
 const ClaimDetail = () => {
-    const { userState } = useAuthContext();
     const {
         id,
         data: claim,
@@ -28,25 +26,11 @@ const ClaimDetail = () => {
                                     Insurance claim {claim.id}
                                 </h1>
                             </div>
-                            {userState.roles != "user" &&
-                                userState.status === "authenticated" && (
-                                    <div className="col col-auto d-flex flex-column align-items-stretch justify-content-center gap-1">
-                                        <Link
-                                            to={`/claims/${id}/edit`}
-                                            state={{ formData: claim }}
-                                            className="btn btn-primary"
-                                        >
-                                            Edit
-                                        </Link>
-
-                                        <button
-                                            className="btn btn-danger"
-                                            onClick={handleDelete}
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                )}
+                            <DetailActionButtons
+                                editUrl={`/claims/${id}/edit`}
+                                formData={claim}
+                                handleDelete={handleDelete}
+                            />
                         </div>
                     </div>
                     <hr />
