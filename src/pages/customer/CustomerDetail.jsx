@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
-import { useAuthContext } from "@/contexts/AuthContext";
 import { useDetail } from "@/hooks/useDetail";
 import ErrorMessage from "@/components/ErrorMessage";
 import InsurancesTable from "@/components/InsurancesTable";
 import BackButton from "../../components/BackButton";
+import DetailActionButtons from "../../components/DetailActionButtons";
 
 const CustomerDetail = () => {
-    const { userState } = useAuthContext();
     const {
         id,
         data: customer,
@@ -36,25 +35,11 @@ const CustomerDetail = () => {
                                     {customer.postalCode}
                                 </small>
                             </div>
-                            {userState.roles != "user" &&
-                                userState.status === "authenticated" && (
-                                    <div className="col col-auto d-flex flex-column align-items-stretch justify-content-center gap-1">
-                                        <Link
-                                            to={`/customers/${id}/edit`}
-                                            state={{ formData: customer }}
-                                            className="btn btn-primary"
-                                        >
-                                            Edit
-                                        </Link>
-
-                                        <button
-                                            className="btn btn-danger"
-                                            onClick={handleDelete}
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                )}
+                            <DetailActionButtons
+                                editUrl={`/customers/${id}/edit`}
+                                formData={customer}
+                                handleDelete={handleDelete}
+                            />
                         </div>
                     </div>
                     <hr />

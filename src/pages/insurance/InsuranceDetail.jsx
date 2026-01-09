@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import { useDetail } from "@/hooks/useDetail";
-import { useAuthContext } from "@/contexts/AuthContext";
 import { dateStringFormatter } from "@/utils/dateStringFormatter";
 import ErrorMessage from "@/components/ErrorMessage";
 import ClaimsTable from "@/components/ClaimsTable";
 import BackButton from "@/components/BackButton";
+import DetailActionButtons from "../../components/DetailActionButtons";
 
 const InsuranceDetail = () => {
-    const { userState } = useAuthContext();
     const {
         id,
         data: insurance,
@@ -27,25 +26,11 @@ const InsuranceDetail = () => {
                             <div className="col d-flex align-items-center">
                                 <h1 className="m-0">{insurance.name}</h1>
                             </div>
-                            {userState.roles != "user" &&
-                                userState.status === "authenticated" && (
-                                    <div className="col col-auto d-flex flex-column align-items-stretch justify-content-center gap-1">
-                                        <Link
-                                            to={`/insurances/${id}/edit`}
-                                            state={{ formData: insurance }}
-                                            className="btn btn-primary"
-                                        >
-                                            Edit
-                                        </Link>
-
-                                        <button
-                                            className="btn btn-danger"
-                                            onClick={handleDelete}
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                )}
+                            <DetailActionButtons
+                                editUrl={`/insurances/${id}/edit`}
+                                formData={insurance}
+                                handleDelete={handleDelete}
+                            />
                         </div>
                     </div>
                     <hr />
