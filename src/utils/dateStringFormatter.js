@@ -1,11 +1,11 @@
 export const dateStringFormatter = (dateString, locale = false) => {
     if (!dateString) return "";
 
-    const date = new Date(dateString);
+    const date = dateString.split("T")[0];
 
     if (locale) {
-        return date.toLocaleDateString("cs-CZ");
+        return new Date(date).toLocaleDateString("cs-CZ");
     }
 
-    return date.toISOString().split("T")[0];
+    return date;
 };

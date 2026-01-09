@@ -21,7 +21,10 @@ const CustomerForm = () => {
                 <ErrorMessage error={customerErrors.general} />
             )}
 
-            <form className="container" onSubmit={handleSubmit}>
+            <form
+                className="container narrow-container"
+                onSubmit={handleSubmit}
+            >
                 <div className="row">
                     <div className="col-6">
                         <InputField

@@ -24,7 +24,11 @@ const ClaimsTable = ({ claims }) => {
                         <td>{claim.description}</td>
                         <td>{claim.amount}</td>
                         <td>{dateStringFormatter(claim.createdAt, true)}</td>
-                        <td>{dateStringFormatter(claim.resolvedAt, true)}</td>
+                        <td>
+                            {claim.resolvedAt
+                                ? dateStringFormatter(claim.resolvedAt, true)
+                                : "---"}
+                        </td>
                     </tr>
                 ))}
             </tbody>

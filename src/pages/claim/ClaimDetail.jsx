@@ -18,7 +18,7 @@ const ClaimDetail = () => {
             {claimErrors.general.length > 0 ? (
                 <ErrorMessage error={claimErrors.general} />
             ) : (
-                <div>
+                <>
                     <div className="container">
                         <div className="row">
                             <div className="col d-flex align-items-center">
@@ -48,11 +48,13 @@ const ClaimDetail = () => {
                         </div>
                     </div>
                     <hr />
-                    <div className="container">
+                    <div className="container narrow-container">
                         <div className="row">
                             <div className="col">
                                 <h5>Description:</h5>
                                 <p>{claim.description}</p>
+                            </div>
+                            <div className="col">
                                 <h5>Amount:</h5>
                                 <p>{claim.amount}</p>
                             </div>
@@ -77,7 +79,7 @@ const ClaimDetail = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </>
             )}
         </div>
     );

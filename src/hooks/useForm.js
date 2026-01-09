@@ -22,8 +22,12 @@ export const useForm = (url) => {
     });
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setData((prev) => ({ ...prev, [name]: value }));
+        const { name, value, type } = e.target;
+
+        setData((prev) => ({
+            ...prev,
+            [name]: type === "date" && value === "" ? null : value,
+        }));
         setErrors((prev) => ({ ...prev, [name]: [], general: [] }));
     };
 
