@@ -3,6 +3,7 @@ import { useAuthContext } from "@/contexts/AuthContext";
 import { useDetail } from "@/hooks/useDetail";
 import ErrorMessage from "@/components/ErrorMessage";
 import InsurancesTable from "@/components/InsurancesTable";
+import BackButton from "../../components/BackButton";
 
 const CustomerDetail = () => {
     const { userState } = useAuthContext();
@@ -19,6 +20,7 @@ const CustomerDetail = () => {
                 <ErrorMessage error={customerErrors.general} />
             ) : (
                 <>
+                    <BackButton url={"/customers"} />
                     <div className="container">
                         <div className="row">
                             <div className="col">

@@ -1,6 +1,7 @@
 import { useForm } from "@/hooks/useForm";
 import ErrorMessage from "@/components/ErrorMessage";
 import InputField from "@/components/InputField";
+import BackButton from "../../components/BackButton";
 
 const CustomerForm = () => {
     const {
@@ -13,6 +14,9 @@ const CustomerForm = () => {
 
     return (
         <>
+            <BackButton
+                url={customer.id ? `/customers/${customer.id}` : "/customers"}
+            />
             <h1 className="mx-2">
                 {mode === "create" ? "Create" : "Edit"} customer:
             </h1>

@@ -4,6 +4,7 @@ import { useAuthContext } from "@/contexts/AuthContext";
 import { dateStringFormatter } from "@/utils/dateStringFormatter";
 import ErrorMessage from "@/components/ErrorMessage";
 import ClaimsTable from "@/components/ClaimsTable";
+import BackButton from "@/components/BackButton";
 
 const InsuranceDetail = () => {
     const { userState } = useAuthContext();
@@ -20,6 +21,7 @@ const InsuranceDetail = () => {
                 <ErrorMessage error={insuranceErrors.general} />
             ) : (
                 <>
+                    <BackButton url={`/customers/${insurance.insuredId}`} />
                     <div className="container">
                         <div className="row">
                             <div className="col d-flex align-items-center">

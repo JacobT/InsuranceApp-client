@@ -2,6 +2,7 @@ import { useForm } from "@/hooks/useForm";
 import { dateStringFormatter } from "@/utils/dateStringFormatter";
 import ErrorMessage from "@/components/ErrorMessage";
 import InputField from "@/components/InputField";
+import BackButton from "../../components/BackButton";
 
 const ClaimForm = () => {
     const {
@@ -14,6 +15,13 @@ const ClaimForm = () => {
 
     return (
         <>
+            <BackButton
+                url={
+                    claim.id
+                        ? `/claims/${claim.id}`
+                        : `/insurances/${claim.insuranceId}`
+                }
+            />
             <h1 className="mx-2">
                 {mode === "create" ? "Create" : "Edit"} claim:
             </h1>

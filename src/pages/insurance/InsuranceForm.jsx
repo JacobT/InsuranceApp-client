@@ -2,6 +2,7 @@ import { useForm } from "@/hooks/useForm";
 import { dateStringFormatter } from "@/utils/dateStringFormatter";
 import InputField from "@/components/InputField";
 import ErrorMessage from "@/components/ErrorMessage";
+import BackButton from "../../components/BackButton";
 
 const InsuranceForm = () => {
     const {
@@ -14,6 +15,13 @@ const InsuranceForm = () => {
 
     return (
         <>
+            <BackButton
+                url={
+                    insurance.id
+                        ? `/insurances/${insurance.id}`
+                        : `/customers/${insurance.insuredId}`
+                }
+            />
             <h1 className="mx-2">
                 {mode === "create" ? "Create" : "Edit"} insurance:
             </h1>
@@ -61,8 +69,7 @@ const InsuranceForm = () => {
                             name={"validFrom"}
                             placeholder={"Začátek pojištění"}
                             value={
-                                dateStringFormatter(insurance.validFrom) ||
-                                dateStringFormatter(Date.now())
+                                dateStringFormatter(insurance.validFrom) || ""
                             }
                             handleChange={handleChange}
                             error={insuranceErrors.validFrom}
