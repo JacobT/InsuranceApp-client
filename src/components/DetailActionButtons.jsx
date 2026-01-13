@@ -1,6 +1,7 @@
-import useAuthContext from "@/contexts/AuthContext";
+import { Link } from "react-router-dom";
+import { useAuthContext } from "@/contexts/AuthContext";
 
-const DetailActionButtons = ({ editUrl, formData, handleDelete }) => {
+const DetailActionButtons = ({ editUrl, handleDelete }) => {
     const { userState } = useAuthContext();
 
     return (
@@ -8,11 +9,7 @@ const DetailActionButtons = ({ editUrl, formData, handleDelete }) => {
             {!userState.roles.includes("user") &&
                 userState.status === "authenticated" && (
                     <div className="col col-auto d-flex flex-column align-items-stretch justify-content-center gap-1">
-                        <Link
-                            to={editUrl}
-                            state={{ formData: formData }}
-                            className="btn btn-primary"
-                        >
+                        <Link to={editUrl} className="btn btn-warning">
                             Edit
                         </Link>
 

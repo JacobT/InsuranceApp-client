@@ -28,8 +28,12 @@ const ClaimDetail = () => {
                             </div>
                             <DetailActionButtons
                                 editUrl={`/claims/${id}/edit`}
-                                formData={claim}
-                                handleDelete={handleDelete}
+                                handleDelete={() =>
+                                    handleDelete({
+                                        url: `/claims/${id}`,
+                                        redirect: `/insurances/${claim.insuranceId}`,
+                                    })
+                                }
                             />
                         </div>
                     </div>
@@ -58,7 +62,7 @@ const ClaimDetail = () => {
                                     {claim.resolvedAt
                                         ? dateStringFormatter(
                                               claim.resolvedAt,
-                                              true
+                                              true,
                                           )
                                         : "---"}
                                 </p>

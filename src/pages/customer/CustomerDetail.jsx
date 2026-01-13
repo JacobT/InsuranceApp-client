@@ -37,8 +37,12 @@ const CustomerDetail = () => {
                             </div>
                             <DetailActionButtons
                                 editUrl={`/customers/${id}/edit`}
-                                formData={customer}
-                                handleDelete={handleDelete}
+                                handleDelete={() =>
+                                    handleDelete({
+                                        url: `/customers/${id}`,
+                                        redirect: "/customers",
+                                    })
+                                }
                             />
                         </div>
                     </div>

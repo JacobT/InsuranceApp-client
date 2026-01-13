@@ -28,8 +28,12 @@ const InsuranceDetail = () => {
                             </div>
                             <DetailActionButtons
                                 editUrl={`/insurances/${id}/edit`}
-                                formData={insurance}
-                                handleDelete={handleDelete}
+                                handleDelete={() =>
+                                    handleDelete({
+                                        url: `/insurances/${id}`,
+                                        redirect: `/customers/${insurance.insuredId}`,
+                                    })
+                                }
                             />
                         </div>
                     </div>
@@ -41,7 +45,7 @@ const InsuranceDetail = () => {
                                 <p>
                                     {dateStringFormatter(
                                         insurance.validFrom,
-                                        true
+                                        true,
                                     )}
                                 </p>
                             </div>
@@ -50,7 +54,7 @@ const InsuranceDetail = () => {
                                 <p>
                                     {dateStringFormatter(
                                         insurance.validTo,
-                                        true
+                                        true,
                                     )}
                                 </p>
                             </div>

@@ -10,6 +10,22 @@
     min-width: 0;
 }
 
+.table-actions {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+tr:hover .table-actions {
+  opacity: 1;
+  pointer-events: auto;
+  background-color: var(--bs-table-hover-bg)
+}
+
+/* .table-actions .btn {
+  background-color: var(--bs-table-hover-bg)
+} */
+
 /* .btn-primary {
   --bs-btn-color: #000;
   --bs-btn-bg: rgba(var(--bs-primary-rgb), 0.5);

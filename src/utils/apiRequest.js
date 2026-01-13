@@ -3,7 +3,7 @@ const API_URL = "http://localhost:5236/api";
 export class ApiRequestError extends Error {
     constructor(response) {
         super(
-            `There was error when fetching data ${response.status} - ${response.statusText}`
+            `There was error when fetching data ${response.status} - ${response.statusText}`,
         );
         this.response = response;
     }

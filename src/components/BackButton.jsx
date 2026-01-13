@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const BackButton = ({ url }) => {
+    const stateUrl = useLocation().state?.prevPage;
+
     return (
-        <Link to={url} className="btn btn-secondary my-3">
+        <Link to={stateUrl ? stateUrl : url} className="btn btn-secondary my-3">
             &lsaquo; Back
         </Link>
     );
