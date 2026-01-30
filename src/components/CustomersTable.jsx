@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import TableActionButtons from "@/components/TableActionButtons";
 
-const CustomersTable = ({ customers }) => {
+const CustomersTable = ({ customers, handleDelete }) => {
     const navigate = useNavigate();
 
     return (
@@ -16,9 +17,15 @@ const CustomersTable = ({ customers }) => {
                             {customer.firstName} {customer.lastName}
                         </td>
                         <td>{customer.email}</td>
-                        <td>
+                        <td className="position-relative">
                             {customer.street}, {customer.city},{" "}
                             {customer.postalCode}
+                            <TableActionButtons
+                                editUrl={`/customers/${customer.id}/edit`}
+                                handleDelete={() =>
+                                    handleDelete(`/customers/${customer.id}`)
+                                }
+                            />
                         </td>
                     </tr>
                 ))}

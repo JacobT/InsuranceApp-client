@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDetail } from "@/hooks/useDetail";
 import ErrorMessage from "@/components/ErrorMessage";
 import InsurancesTable from "@/components/InsurancesTable";
@@ -6,6 +6,7 @@ import BackButton from "@/components/BackButton";
 import DetailActionButtons from "@/components/DetailActionButtons";
 
 const CustomerDetail = () => {
+    const navigate = useNavigate();
     const {
         id,
         data: customer,
@@ -40,7 +41,7 @@ const CustomerDetail = () => {
                                 handleDelete={() =>
                                     handleDelete({
                                         url: `/customers/${id}`,
-                                        redirect: "/customers",
+                                        callBack: navigate("/customers"),
                                     })
                                 }
                             />

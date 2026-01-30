@@ -16,6 +16,9 @@ export const useFetchData = ({
 
     const mounted = useRef(true);
 
+    const [refreshKey, setRefreshKey] = useState(0);
+    const refresh = () => setRefreshKey(refreshKey + 1);
+
     useEffect(() => {
         mounted.current = true;
         if (!enabled) return;
@@ -37,7 +40,7 @@ export const useFetchData = ({
         getData();
 
         return () => (mounted.current = false);
-    }, [url, enabled, ...dependencies]);
+    }, [url, enabled, refreshKey, ...dependencies]);
 
-    return { data, setData, errors, setErrors };
+    return { data, setData, errors, setErrors, refresh };
 };

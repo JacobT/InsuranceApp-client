@@ -3,8 +3,10 @@ import { useDetail } from "@/hooks/useDetail";
 import ErrorMessage from "@/components/ErrorMessage";
 import BackButton from "@/components/BackButton";
 import DetailActionButtons from "@/components/DetailActionButtons";
+import { useNavigate } from "react-router-dom";
 
 const ClaimDetail = () => {
+    const navigate = useNavigate();
     const {
         id,
         data: claim,
@@ -31,7 +33,9 @@ const ClaimDetail = () => {
                                 handleDelete={() =>
                                     handleDelete({
                                         url: `/claims/${id}`,
-                                        redirect: `/insurances/${claim.insuranceId}`,
+                                        callBack: navigate(
+                                            `/insurances/${claim.insuranceId}`,
+                                        ),
                                     })
                                 }
                             />

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDetail } from "@/hooks/useDetail";
 import { dateStringFormatter } from "@/utils/dateStringFormatter";
 import ErrorMessage from "@/components/ErrorMessage";
@@ -7,6 +7,7 @@ import BackButton from "@/components/BackButton";
 import DetailActionButtons from "@/components/DetailActionButtons";
 
 const InsuranceDetail = () => {
+    const navigate = useNavigate();
     const {
         id,
         data: insurance,
@@ -31,7 +32,9 @@ const InsuranceDetail = () => {
                                 handleDelete={() =>
                                     handleDelete({
                                         url: `/insurances/${id}`,
-                                        redirect: `/customers/${insurance.insuredId}`,
+                                        callBack: navigate(
+                                            `/customers/${insurance.insuredId}`,
+                                        ),
                                     })
                                 }
                             />

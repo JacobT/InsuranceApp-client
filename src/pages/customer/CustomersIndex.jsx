@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import CustomersTable from "@/components/CustomersTable";
 import ErrorMessage from "@/components/ErrorMessage";
-import { useFetchData } from "@/hooks/useFetchData";
+import { useIndex } from "@/hooks/useIndex";
 
 const CustomersIndex = () => {
-    const { data: customers, errors: customersErrors } = useFetchData({
-        url: "/customers",
-    });
+    const {
+        data: customers,
+        errors: customersErrors,
+        handleDelete,
+    } = useIndex("/customers");
 
     return (
         <div>
@@ -40,7 +42,10 @@ const CustomersIndex = () => {
                     </div>
                     <div className="row">
                         <div className="col">
-                            <CustomersTable customers={customers} />
+                            <CustomersTable
+                                customers={customers}
+                                handleDelete={handleDelete}
+                            />
                         </div>
                     </div>
                 </div>
