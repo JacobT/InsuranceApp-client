@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import TableActionButtons from "@/components/TableActionButtons";
 
-const InsurancesTable = ({ insurances }) => {
+const InsurancesTable = ({ insurances, handleDelete }) => {
     const navigate = useNavigate();
 
     return (
@@ -24,7 +25,17 @@ const InsurancesTable = ({ insurances }) => {
                         >
                             <td>{insurance.name}</td>
                             <td>{insurance.subject}</td>
-                            <td>{insurance.amount}</td>
+                            <td className="position-relative">
+                                {insurance.amount}
+                                <TableActionButtons
+                                    editUrl={`/insurances/${insurance.id}/edit`}
+                                    handleDelete={() =>
+                                        handleDelete(
+                                            `/insurances/${insurance.id}`,
+                                        )
+                                    }
+                                />
+                            </td>
                         </tr>
                     ))}
             </tbody>

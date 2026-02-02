@@ -4,13 +4,15 @@ import { useHandleDelete } from "./useHandleDelete";
 
 export const useDetail = (url) => {
     const { id } = useParams();
-    const { data, errors, setErrors } = useFetchData({ url: `${url}/${id}` });
+    const { data, errors, setErrors, refresh } = useFetchData({
+        url: `${url}/${id}`,
+    });
     const handleDelete = useHandleDelete(setErrors);
 
     return {
         id,
         data,
         errors,
-        handleDelete,
+        handleDelete: (url) => handleDelete({ url, callBack: refresh }),
     };
 };

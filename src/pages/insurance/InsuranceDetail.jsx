@@ -89,7 +89,10 @@ const InsuranceDetail = () => {
                         {insurance.claims && insurance.claims.length > 0 && (
                             <div className="row">
                                 <div className="col">
-                                    <ClaimsTable claims={insurance.claims} />
+                                    <ClaimsTable
+                                        claims={insurance.claims}
+                                        handleDelete={handleDelete}
+                                    />
                                 </div>
                             </div>
                         )}

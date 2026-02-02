@@ -67,6 +67,7 @@ const CustomerDetail = () => {
                                 <div className="col">
                                     <InsurancesTable
                                         insurances={customer.insurances}
+                                        handleDelete={handleDelete}
                                     />
                                 </div>
                             </div>

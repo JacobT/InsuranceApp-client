@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { dateStringFormatter } from "@/utils/dateStringFormatter";
+import TableActionButtons from "@/components/TableActionButtons";
 
-const ClaimsTable = ({ claims }) => {
+const ClaimsTable = ({ claims, handleDelete }) => {
     const navigate = useNavigate();
 
     return (
@@ -24,10 +25,16 @@ const ClaimsTable = ({ claims }) => {
                         <td>{claim.description}</td>
                         <td>{claim.amount}</td>
                         <td>{dateStringFormatter(claim.createdAt, true)}</td>
-                        <td>
+                        <td className="position-relative">
                             {claim.resolvedAt
                                 ? dateStringFormatter(claim.resolvedAt, true)
                                 : "---"}
+                            <TableActionButtons
+                                editUrl={`/claims/${claim.id}/edit`}
+                                handleDelete={() =>
+                                    handleDelete(`/claims/${claim.id}`)
+                                }
+                            />
                         </td>
                     </tr>
                 ))}
