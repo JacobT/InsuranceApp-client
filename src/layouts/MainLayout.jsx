@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import Notification from "../components/Notification";
 
 const MainLayout = () => {
     return (
@@ -7,6 +8,7 @@ const MainLayout = () => {
             <Navbar />
 
             <main className="flex-fill container py-4">
+                <Notification />
                 <Outlet />
             </main>
 

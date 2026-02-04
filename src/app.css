@@ -22,6 +22,37 @@ tr:hover .table-actions {
   background-color: var(--bs-table-hover-bg)
 }
 
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+  20%, 80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+}
+
+.fixed-alertbox {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  width: auto;
+  max-width: 90%;
+}
+
+.fixed-alert{
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  width: auto;
+  animation: fadeInOut 4s ease forwards;
+}
+
+.fixed-alert-dismissable{
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  width: auto;
+}
+
 /* .table-actions .btn {
   background-color: var(--bs-table-hover-bg)
 } */
