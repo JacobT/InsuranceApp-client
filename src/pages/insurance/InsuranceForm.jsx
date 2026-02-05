@@ -1,8 +1,8 @@
 import { useForm } from "@/hooks/useForm";
 import { dateStringFormatter } from "@/utils/dateStringFormatter";
 import InputField from "@/components/InputField";
-import ErrorMessage from "@/components/ErrorMessage";
 import BackButton from "@/components/BackButton";
+import { PAGE_MODES } from "@/utils/constants";
 
 const InsuranceForm = () => {
     const {
@@ -23,13 +23,9 @@ const InsuranceForm = () => {
                 }
             />
             <h1 className="mx-2">
-                {mode === "create" ? "Create" : "Edit"} insurance:
+                {mode === PAGE_MODES.CREATE ? "Create" : "Edit"} insurance:
             </h1>
             <hr />
-            {insuranceErrors.general.length > 0 && (
-                <ErrorMessage error={insuranceErrors.general} />
-            )}
-
             <form
                 className="container narrow-container"
                 onSubmit={handleSubmit}

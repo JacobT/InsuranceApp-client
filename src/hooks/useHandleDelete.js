@@ -4,7 +4,7 @@ import { useNotificationContext } from "@/contexts/NotificationContext";
 
 export const useHandleDelete = (setErrors) => {
     const { apiDelete } = useApi();
-    const { addSuccessMessage } = useNotificationContext();
+    const { addSuccessMessage, addErrorMessage } = useNotificationContext();
 
     const handleDelete = async ({ url, callBack }) => {
         if (confirm("Do you want to delete this item?")) {
@@ -15,6 +15,10 @@ export const useHandleDelete = (setErrors) => {
             } catch (error) {
                 const newErrors = await handleError(error);
                 setErrors(newErrors);
+
+                newErrors.general.forEach((e) => {
+                    addErrorMessage(e);
+                });
             }
         }
     };

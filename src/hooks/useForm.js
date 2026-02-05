@@ -8,7 +8,7 @@ import { PAGE_MODES } from "@/utils/constants";
 
 export const useForm = (url) => {
     const navigate = useNavigate();
-    const { addSuccessMessage } = useNotificationContext();
+    const { addSuccessMessage, addErrorMessage } = useNotificationContext();
     const { apiPost, apiPut } = useApi();
     const { id } = useParams();
     const { state } = useLocation();
@@ -53,6 +53,10 @@ export const useForm = (url) => {
         } catch (error) {
             const newErrors = await handleError(error);
             setErrors(newErrors);
+
+            newErrors.general.forEach((e) => {
+                addErrorMessage(e);
+            });
         }
     };
 

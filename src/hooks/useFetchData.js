@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useApi } from "@/hooks/useApi";
 import { createEmptyErrorsState, handleError } from "@/utils/handleError";
+import { useNotificationContext } from "@/contexts/NotificationContext";
 
 export const useFetchData = ({
     url,
@@ -10,6 +11,7 @@ export const useFetchData = ({
     enabled = true,
 }) => {
     const { apiGet } = useApi();
+    const { addErrorMessage } = useNotificationContext();
     const [data, setData] = externalDataState || useState([]);
     const [errors, setErrors] =
         externalErrorState || useState(createEmptyErrorsState());
@@ -35,6 +37,10 @@ export const useFetchData = ({
 
                 const newErrors = await handleError(error);
                 setErrors(newErrors);
+
+                newErrors.general.forEach((e) => {
+                    addErrorMessage(e);
+                });
             }
         };
         getData();

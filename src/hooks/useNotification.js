@@ -30,19 +30,3 @@ export const useNotification = () => {
         clearMessage,
     };
 };
-
-// const [error, setError] = useState([]);
-
-// const addError = (message) => {
-//     setError((prev) =>
-//         error.includes(message) ? prev : [...prev, message],
-//     );
-// };
-
-// const clearError = (messageToClear) => {
-//     setError((prev) => prev.filter((m) => m !== messageToClear));
-// };
-
-// error,
-// addError,
-// clearError,

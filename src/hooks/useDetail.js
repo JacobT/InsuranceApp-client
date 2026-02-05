@@ -10,7 +10,6 @@ export const useDetail = (url) => {
     const handleDelete = useHandleDelete(setErrors);
 
     return {
-        id,
         data,
         errors,
         handleDelete,

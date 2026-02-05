@@ -7,81 +7,71 @@ import DetailActionButtons from "@/components/DetailActionButtons";
 
 const CustomerDetail = () => {
     const navigate = useNavigate();
-    const {
-        data: customer,
-        errors: customerErrors,
-        handleDelete,
-        refresh,
-    } = useDetail("/customers");
+    const { data: customer, handleDelete, refresh } = useDetail("/customers");
 
     return (
-        <div>
-            {customerErrors.general.length > 0 ? (
-                <ErrorMessage error={customerErrors.general} />
-            ) : (
-                <>
-                    <BackButton url={"/customers"} />
-                    <div className="container">
-                        <div className="row">
-                            <div className="col">
-                                <h1>
-                                    {customer.firstName} {customer.lastName}
-                                </h1>
-                                <small>
-                                    Email: {customer.email}
-                                    <br />
-                                    Phone: {customer.phone}
-                                    <br />
-                                    Address: {customer.street}, {customer.city},{" "}
-                                    {customer.postalCode}
-                                </small>
-                            </div>
-                            <DetailActionButtons
-                                editUrl={`/customers/${customer.id}/edit`}
-                                handleDelete={() =>
+        <>
+            <BackButton url={"/customers"} />
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <h1>
+                            {customer.firstName} {customer.lastName}
+                        </h1>
+                        <small>
+                            Email: {customer.email}
+                            <br />
+                            Phone: {customer.phone}
+                            <br />
+                            Address: {customer.street}, {customer.city},{" "}
+                            {customer.postalCode}
+                        </small>
+                    </div>
+                    <DetailActionButtons
+                        editUrl={`/customers/${customer.id}/edit`}
+                        handleDelete={() =>
+                            handleDelete({
+                                url: `/customers/${customer.id}`,
+                                callBack: () => navigate("/customers"),
+                            })
+                        }
+                    />
+                </div>
+            </div>
+            <hr />
+            <div className="container">
+                <div className="row mb-3">
+                    <div className="col text-center">
+                        <Link
+                            to={"/insurances/create"}
+                            state={{
+                                formData: { insuredId: customer.id },
+                            }}
+                            className="btn btn-primary"
+                        >
+                            Add new insurance
+                        </Link>
+                    </div>
+                </div>
+                {customer.insurances?.length > 0 && (
+                    <div className="row">
+                        <div className="col">
+                            <InsurancesTable
+                                insurances={customer.insurances}
+                                handleDelete={(url) =>
                                     handleDelete({
-                                        url: `/customers/${customer.id}`,
-                                        callBack: () => navigate("/customers"),
+                                        url,
+                                        callBack: refresh,
                                     })
                                 }
                             />
                         </div>
                     </div>
-                    <hr />
-                    <div className="container">
-                        <div className="row mb-3">
-                            <div className="col text-center">
-                                <Link
-                                    to={"/insurances/create"}
-                                    state={{
-                                        formData: { insuredId: customer.id },
-                                    }}
-                                    className="btn btn-primary"
-                                >
-                                    Add new insurance
-                                </Link>
-                            </div>
-                        </div>
-                        {customer.insurances?.length > 0 && (
-                            <div className="row">
-                                <div className="col">
-                                    <InsurancesTable
-                                        insurances={customer.insurances}
-                                        handleDelete={(url) =>
-                                            handleDelete({
-                                                url,
-                                                callBack: refresh,
-                                            })
-                                        }
-                                    />
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                    <hr />
-                </>
-            )}
-        </div>
+                )}
+            </div>
+            <hr />
+        </>
     );
 };
+
 export default CustomerDetail;
