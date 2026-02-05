@@ -13,6 +13,7 @@ export const useDetail = (url) => {
         id,
         data,
         errors,
-        handleDelete: (url) => handleDelete({ url, callBack: refresh }),
+        handleDelete,
+        refresh,
     };
 };

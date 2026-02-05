@@ -8,10 +8,10 @@ import DetailActionButtons from "@/components/DetailActionButtons";
 const CustomerDetail = () => {
     const navigate = useNavigate();
     const {
-        id,
         data: customer,
         errors: customerErrors,
         handleDelete,
+        refresh,
     } = useDetail("/customers");
 
     return (
@@ -37,11 +37,11 @@ const CustomerDetail = () => {
                                 </small>
                             </div>
                             <DetailActionButtons
-                                editUrl={`/customers/${id}/edit`}
+                                editUrl={`/customers/${customer.id}/edit`}
                                 handleDelete={() =>
                                     handleDelete({
-                                        url: `/customers/${id}`,
-                                        callBack: navigate("/customers"),
+                                        url: `/customers/${customer.id}`,
+                                        callBack: () => navigate("/customers"),
                                     })
                                 }
                             />
@@ -67,7 +67,12 @@ const CustomerDetail = () => {
                                 <div className="col">
                                     <InsurancesTable
                                         insurances={customer.insurances}
-                                        handleDelete={handleDelete}
+                                        handleDelete={(url) =>
+                                            handleDelete({
+                                                url,
+                                                callBack: refresh,
+                                            })
+                                        }
                                     />
                                 </div>
                             </div>
