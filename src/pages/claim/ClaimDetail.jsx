@@ -1,7 +1,6 @@
 import { dateStringFormatter } from "@/utils/dateStringFormatter";
 import { useDetail } from "@/hooks/useDetail";
-import ErrorMessage from "@/components/ErrorMessage";
-import BackButton from "@/components/BackButton";
+import BackButton from "@/components/navigation/BackButton";
 import DetailActionButtons from "@/components/DetailActionButtons";
 import { useNavigate } from "react-router-dom";
 

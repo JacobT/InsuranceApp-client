@@ -1,8 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDetail } from "@/hooks/useDetail";
-import ErrorMessage from "@/components/ErrorMessage";
-import InsurancesTable from "@/components/InsurancesTable";
-import BackButton from "@/components/BackButton";
+import InsurancesTable from "@/components/tables/InsurancesTable";
+import BackButton from "@/components/navigation/BackButton";
 import DetailActionButtons from "@/components/DetailActionButtons";
 
 const CustomerDetail = () => {

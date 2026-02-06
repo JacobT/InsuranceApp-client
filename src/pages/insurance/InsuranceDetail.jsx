@@ -1,9 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDetail } from "@/hooks/useDetail";
 import { dateStringFormatter } from "@/utils/dateStringFormatter";
-import ErrorMessage from "@/components/ErrorMessage";
-import ClaimsTable from "@/components/ClaimsTable";
-import BackButton from "@/components/BackButton";
+import ClaimsTable from "@/components/tables/ClaimsTable";
+import BackButton from "@/components/navigation/BackButton";
 import DetailActionButtons from "@/components/DetailActionButtons";
 
 const InsuranceDetail = () => {

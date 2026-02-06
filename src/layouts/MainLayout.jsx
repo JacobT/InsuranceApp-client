@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "@/components/Navbar";
-import Notification from "../components/Notification";
+import Navbar from "@/components/navigation/Navbar";
+import Notification from "@/components/Notification";
 
 const MainLayout = () => {
     return (

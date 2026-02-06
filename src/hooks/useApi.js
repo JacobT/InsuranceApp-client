@@ -24,7 +24,7 @@ export const useApi = () => {
     };
 
     return {
-        apiGet: async (url) => await apiMethod("GET", url),
+        apiGet: (url) => apiMethod("GET", url),
         apiPost: (url, data) => apiMethod("POST", url, data),
         apiPut: (url, data) => apiMethod("PUT", url, data),
         apiDelete: (url) => apiMethod("DELETE", url),

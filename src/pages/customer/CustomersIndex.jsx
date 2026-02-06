@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import CustomersTable from "@/components/CustomersTable";
+import CustomersTable from "@/components/tables/CustomersTable";
 import { useIndex } from "@/hooks/useIndex";
 
 const CustomersIndex = () => {

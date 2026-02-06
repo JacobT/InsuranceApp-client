@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useAuthContext } from "@/contexts/AuthContext";
+import { AUTH_STATUS } from "@/utils/constants";
 
 const Navbar = () => {
     const { userState, logout } = useAuthContext();
@@ -49,7 +50,8 @@ const Navbar = () => {
                                     className={`nav-link 
                                     ${route === "/customers" ? "active" : ""} 
                                     ${
-                                        userState.status === "authenticated"
+                                        userState.status ===
+                                        AUTH_STATUS.AUTHENTICATED
                                             ? ""
                                             : "disabled"
                                     }`}
@@ -59,7 +61,7 @@ const Navbar = () => {
                                 </Link>
                             </li>
                         </ul>
-                        {userState.status === "unauthenticated" && (
+                        {userState.status === AUTH_STATUS.UNAUTHENTICATED && (
                             <ul className="navbar-nav ms-md-auto me-3 ms-3">
                                 <li className="nav-item">
                                     <Link
@@ -87,7 +89,7 @@ const Navbar = () => {
                                 </li>
                             </ul>
                         )}
-                        {userState.status === "authenticated" && (
+                        {userState.status === AUTH_STATUS.AUTHENTICATED && (
                             <ul className="navbar-nav ms-md-auto me-3 ms-3">
                                 <li className="nav-item nav-link disabled">
                                     {userState.email}

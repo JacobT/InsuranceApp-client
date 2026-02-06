@@ -12,6 +12,7 @@ import {
     logoutService,
 } from "@/services/authService";
 import { ApiRequestError } from "@/utils/apiRequest";
+import { AUTH_STATUS } from "@/utils/constants";
 
 const USER_ROLES =
     "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
@@ -19,7 +20,7 @@ const ACCESS_TOKEN_KEY = "jwtToken";
 const REFRESH_TOKEN_KEY = "refreshToken";
 
 export const useAuth = () => {
-    const createEmptyUser = (status = "unauthenticated") => ({
+    const createEmptyUser = (status = AUTH_STATUS.UNAUTHENTICATED) => ({
         email: "",
         roles: "",
         status,
@@ -49,7 +50,7 @@ export const useAuth = () => {
             roles: Array.isArray(userClaims[USER_ROLES])
                 ? userClaims[USER_ROLES].join(" ")
                 : userClaims[USER_ROLES],
-            status: "authenticated",
+            status: AUTH_STATUS.AUTHENTICATED,
         });
 
         setAccessToken({

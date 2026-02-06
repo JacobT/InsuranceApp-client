@@ -2,9 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "@/contexts/AuthContext";
 import { createEmptyErrorsState, handleError } from "@/utils/handleError";
+import { useNotificationContext } from "@/contexts/NotificationContext";
+import { PAGE_MODES } from "@/utils/constants";
 
 export const useAuthForm = (mode) => {
     const { register, login } = useAuthContext();
+    const { addErrorMessage } = useNotificationContext();
     const navigate = useNavigate();
 
     const [errors, setErrors] = useState(createEmptyErrorsState());
@@ -25,7 +28,10 @@ export const useAuthForm = (mode) => {
 
         setErrors(createEmptyErrorsState());
         const { confirmPassword, ...payload } = formState;
-        if (mode === "register" && confirmPassword != payload.password) {
+        if (
+            mode === PAGE_MODES.REGISTER &&
+            confirmPassword != payload.password
+        ) {
             setErrors((prev) => ({
                 ...prev,
                 confirmPassword: ["Passwords don't match."],
@@ -35,7 +41,7 @@ export const useAuthForm = (mode) => {
         }
 
         try {
-            if (mode === "register") {
+            if (mode === PAGE_MODES.REGISTER) {
                 await register(payload);
             } else {
                 await login(payload);
@@ -44,6 +50,10 @@ export const useAuthForm = (mode) => {
         } catch (error) {
             const newErrors = await handleError(error);
             setErrors(newErrors);
+
+            newErrors.general.forEach((e) => {
+                addErrorMessage(e);
+            });
         }
     };
 
