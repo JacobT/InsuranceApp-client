@@ -5,6 +5,7 @@ import { useNotificationContext } from "@/contexts/NotificationContext";
 
 export const useFetchData = ({
     url,
+    params,
     dependencies = [],
     externalDataState = null,
     externalErrorState = null,
@@ -27,7 +28,7 @@ export const useFetchData = ({
 
         const getData = async () => {
             try {
-                const response = await apiGet(url);
+                const response = await apiGet(url, params);
                 const data = await response.json();
                 if (mounted.current) {
                     setData(data);
@@ -46,7 +47,7 @@ export const useFetchData = ({
         getData();
 
         return () => (mounted.current = false);
-    }, [url, enabled, refreshKey, ...dependencies]);
+    }, [url, enabled, params, refreshKey, ...dependencies]);
 
     return { data, setData, errors, setErrors, refresh };
 };

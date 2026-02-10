@@ -6,11 +6,11 @@ export const useApi = () => {
     const navigate = useNavigate();
     const { getAccessToken } = useAuthContext();
 
-    const apiMethod = async (method, url, data = null) => {
+    const apiMethod = async ({ method, url, data = null, params }) => {
         try {
             const body = data ? JSON.stringify(data) : undefined;
             const token = await getAccessToken();
-            return await apiRequest(url, { method, body, token });
+            return await apiRequest(url, { method, body, token, params });
         } catch (error) {
             if (
                 error instanceof ApiRequestError &&
@@ -24,9 +24,9 @@ export const useApi = () => {
     };
 
     return {
-        apiGet: (url) => apiMethod("GET", url),
-        apiPost: (url, data) => apiMethod("POST", url, data),
-        apiPut: (url, data) => apiMethod("PUT", url, data),
-        apiDelete: (url) => apiMethod("DELETE", url),
+        apiGet: (url, params) => apiMethod({ method: "GET", url, params }),
+        apiPost: (url, data) => apiMethod({ Method: "POST", url, data }),
+        apiPut: (url, data) => apiMethod({ Method: "PUT", url, data }),
+        apiDelete: (url) => apiMethod({ Method: "DELETE", url }),
     };
 };

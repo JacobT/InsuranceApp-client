@@ -1,8 +1,10 @@
 import { useFetchData } from "@/hooks/useFetchData";
 import { useHandleDelete } from "@/hooks/useHandleDelete";
+import { useSearchParams } from "react-router-dom";
 
 export const useIndex = (url) => {
-    const { data, errors, setErrors, refresh } = useFetchData({ url });
+    const [params, setParams] = useSearchParams();
+    const { data, errors, setErrors, refresh } = useFetchData({ url, params });
 
     const handleDelete = useHandleDelete(setErrors);
 
@@ -10,5 +12,6 @@ export const useIndex = (url) => {
         data,
         errors,
         handleDelete: (url) => handleDelete({ url, callBack: refresh }),
+        setParams,
     };
 };

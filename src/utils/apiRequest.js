@@ -9,17 +9,31 @@ export class ApiRequestError extends Error {
     }
 }
 
-export const apiRequest = async (url, { method = "GET", body, token } = {}) => {
+export const apiRequest = async (url, { method, body, token, params } = {}) => {
     const headers = { "Content-Type": "application/json" };
     if (token) {
         headers.authorization = `Bearer ${token}`;
     }
 
-    const response = await fetch(`${API_URL}${url}`, {
-        method,
-        headers,
-        body,
-    });
+    // console.log(params);
+
+    // let filteredParams;
+    // if (params) {
+    //     filteredParams = Object.fromEntries(
+    //         Object.entries(params).filter(([key, value]) => value != null),
+    //     );
+    // }
+
+    // console.log(filteredParams);
+
+    const response = await fetch(
+        `${API_URL}${url}${`?${new URLSearchParams(params)}`}`,
+        {
+            method,
+            headers,
+            body,
+        },
+    );
 
     if (!response.ok) {
         if (

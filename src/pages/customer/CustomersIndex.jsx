@@ -3,7 +3,7 @@ import CustomersTable from "@/components/tables/CustomersTable";
 import { useIndex } from "@/hooks/useIndex";
 
 const CustomersIndex = () => {
-    const { data: customers, handleDelete } = useIndex("/customers");
+    const { data: customers, handleDelete, setParams } = useIndex("/customers");
 
     return (
         <div>
@@ -14,9 +14,12 @@ const CustomersIndex = () => {
                         <small>Amount of customers: {customers.length}</small>
                     </div>
                     <div className="col col-auto text-end d-flex align-items-center gap-1">
-                        <button className="btn btn-primary">
-                            Filter (NYI)
-                        </button>
+                        <Link
+                            to={"/customers/create"}
+                            className="btn btn-primary"
+                        >
+                            Create new customer
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -24,12 +27,9 @@ const CustomersIndex = () => {
             <div className="container">
                 <div className="row mb-3">
                     <div className="col text-center">
-                        <Link
-                            to={"/customers/create"}
-                            className="btn btn-primary"
-                        >
-                            Create new customer
-                        </Link>
+                        <button className="btn btn-primary">
+                            Filter (NYI)
+                        </button>
                     </div>
                 </div>
                 <div className="row">
