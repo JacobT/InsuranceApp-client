@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import CustomersTable from "@/components/tables/CustomersTable";
 import { useIndex } from "@/hooks/useIndex";
+import FilterField from "@/components/tables/FilterField";
 
 const CustomersIndex = () => {
     const { data: customers, handleDelete, setParams } = useIndex("/customers");
@@ -25,11 +26,9 @@ const CustomersIndex = () => {
             </div>
             <hr />
             <div className="container">
-                <div className="row mb-3">
-                    <div className="col text-center">
-                        <button className="btn btn-primary">
-                            Filter (NYI)
-                        </button>
+                <div className="row mb-3 ">
+                    <div className="col">
+                        <FilterField setParams={setParams} />
                     </div>
                 </div>
                 <div className="row">
