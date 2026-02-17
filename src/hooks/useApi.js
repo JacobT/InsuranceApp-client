@@ -25,8 +25,8 @@ export const useApi = () => {
 
     return {
         apiGet: (url, params) => apiMethod({ method: "GET", url, params }),
-        apiPost: (url, data) => apiMethod({ Method: "POST", url, data }),
-        apiPut: (url, data) => apiMethod({ Method: "PUT", url, data }),
-        apiDelete: (url) => apiMethod({ Method: "DELETE", url }),
+        apiPost: (url, data) => apiMethod({ method: "POST", url, data }),
+        apiPut: (url, data) => apiMethod({ method: "PUT", url, data }),
+        apiDelete: (url) => apiMethod({ method: "DELETE", url }),
     };
 };

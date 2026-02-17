@@ -19,7 +19,6 @@
 tr:hover .table-actions {
     opacity: 1;
     pointer-events: auto;
-    background-color: var(--bs-table-hover-bg);
 }
 
 @keyframes fadeInOut {

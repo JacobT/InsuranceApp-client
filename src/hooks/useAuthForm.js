@@ -20,7 +20,7 @@ export const useAuthForm = (mode) => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setForm((prev) => ({ ...prev, [name]: value }));
-        setErrors((prev) => ({ ...prev, [name]: [], general: [] }));
+        setErrors(createEmptyErrorsState());
     };
 
     const handleSubmit = async (e) => {

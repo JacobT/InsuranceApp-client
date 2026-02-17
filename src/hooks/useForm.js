@@ -11,10 +11,10 @@ export const useForm = (url) => {
     const { addSuccessMessage, addErrorMessage } = useNotificationContext();
     const { apiPost, apiPut } = useApi();
     const { id } = useParams();
-    const { state } = useLocation();
+    const prevPage = useLocation().state?.prevPage;
     const mode = id ? PAGE_MODES.EDIT : PAGE_MODES.CREATE;
 
-    const [data, setData] = useState(state?.formData ?? {});
+    const [data, setData] = useState({});
     const [errors, setErrors] = useState(createEmptyErrorsState());
 
     useFetchData({
@@ -31,7 +31,7 @@ export const useForm = (url) => {
             ...prev,
             [name]: type === "date" && value === "" ? null : value,
         }));
-        setErrors((prev) => ({ ...prev, [name]: [], general: [] }));
+        setErrors(createEmptyErrorsState());
     };
 
     const handleSubmit = async (e) => {
@@ -45,7 +45,7 @@ export const useForm = (url) => {
                 response = await apiPut(`${url}/${id}`, data);
             }
             const responseData = await response.json();
-            navigate(`${url}/${responseData.id}`);
+            navigate(prevPage ? prevPage : `${url}/${responseData.id}`);
 
             addSuccessMessage(
                 `Item successfully ${mode === PAGE_MODES.CREATE ? "created" : "edited"}.`,
