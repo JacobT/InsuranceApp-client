@@ -15,7 +15,7 @@ const FilterField = ({ setParams }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="input-group justify-content-center">
+            <div className="position-relative d-flex justify-content-end">
                 <input
                     ref={searchInput}
                     className={`form-control search-input ${toggle ? "open" : ""}`}

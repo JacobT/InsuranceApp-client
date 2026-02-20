@@ -34,6 +34,7 @@ export const useFilterField = (setParams) => {
 
     const handleClick = () => {
         if (!filter.search) setToggle(!toggle);
+        handleSubmit();
     };
 
     return {

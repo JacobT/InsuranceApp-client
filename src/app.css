@@ -96,12 +96,15 @@ tr:hover .table-actions {
 }
 
 .search-input.open {
-    width: 300px;
+    width: 250px;
+    font-size: 0.8em;
     opacity: 1;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     margin-left: 0.5rem;
     border: 1px solid var(--bs-border-color);
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
 
     pointer-events: auto;
 }
