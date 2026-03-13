@@ -1,8 +1,8 @@
-#InsuranceApp - Client
+# InsuranceApp - Client
 
 A modern React-based frontend application for managing an insurance system, including customers, insurances, and claims. This project serves as a portfolio piece demonstrating full-stack development skills, focusing on React best practices, custom hooks, and API integration.
 
-##Features
+## Features
 
 - **User Authentication:** Login and registration with JWT token management.
 - **Customer Management:** View, create, edit, and delete customer records with filtering.
@@ -12,7 +12,7 @@ A modern React-based frontend application for managing an insurance system, incl
 - **Error Handling:** Comprehensive error management with user notifications.
 - **Role-Based Access:** Basic role checks for user permissions.
 
-##Technologies Used
+## Technologies Used
 
 - **React 19:** Modern React with hooks, context API, and functional components.
 - **Vite:** Fast build tool for development and production.
@@ -25,7 +25,7 @@ A modern React-based frontend application for managing an insurance system, incl
 - **Fetch API:** HTTP requests with custom error handling and token authentication.
 
 
-##Project Structure
+## Project Structure
 
 - `components` Reusable UI components (tables, forms, navigation).
 - `hooks` Custom hooks for logic separation (e.g., useApi, useForm).
@@ -35,7 +35,7 @@ A modern React-based frontend application for managing an insurance system, incl
 - `services` API service functions.
 
 
-##Learning Outcomes
+## Learning Outcomes
 
 This project highlights skills in:
 
