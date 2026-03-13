@@ -1,45 +1,41 @@
-<h1>InsuranceApp - Client</h1>
+#InsuranceApp - Client
 
 A modern React-based frontend application for managing an insurance system, including customers, insurances, and claims. This project serves as a portfolio piece demonstrating full-stack development skills, focusing on React best practices, custom hooks, and API integration.
 
-<h2>Features</h2>
+##Features
 
-<ul>
-  <li><strong>User Authentication:</strong> Login and registration with JWT token management.</li>
-  <li><strong>Customer Management:</strong> View, create, edit, and delete customer records with filtering.</li>
-  <li><strong>Insurance Management:</strong> Handle insurance policies linked to customers, including creation and editing.</li>
-  <li><strong>Claims Management:</strong> Process insurance claims with creation, editing, and resolution tracking.</li>
-  <li><strong>Responsive UI:</strong> Built with Bootstrap for a clean, mobile-friendly interface.</li>
-  <li><strong>Error Handling:</strong> Comprehensive error management with user notifications.</li>
-  <li><strong>Role-Based Access:</strong> Basic role checks for user permissions.</li>
-</ul>
+- **User Authentication:** Login and registration with JWT token management.
+- **Customer Management:** View, create, edit, and delete customer records with filtering.
+- **Insurance Management:** Handle insurance policies linked to customers, including creation and editing.
+- **Claims Management:** Process insurance claims with creation, editing, and resolution tracking.
+- **Responsive UI:** Built with Bootstrap for a clean, mobile-friendly interface.
+- **Error Handling:** Comprehensive error management with user notifications.
+- **Role-Based Access:** Basic role checks for user permissions.
 
-<h2>Technologies Used</h2>
+##Technologies Used
 
-<ul>
-  <li><strong>React 19:</strong> Modern React with hooks, context API, and functional components.</li>
-  <li><strong>Vite:</strong> Fast build tool for development and production.</li>
-  <li><strong>React Router DOM:</strong> Client-side routing for single-page application navigation.</li>
-  <li><strong>Bootstrap 5:</strong> CSS framework for responsive design and components.</li>
-  <li><strong>React Bootstrap Icons:</strong> Icon library for UI elements.</li>
-  <li><strong>ESLint:</strong> Code linting for maintainable JavaScript/React code.</li>
-  <li><strong>Custom Hooks:</strong> Reusable logic for API calls, forms, authentication, and data fetching.</li>
-  <li><strong>Context API:</strong> State management for authentication, notifications, and confirmations.</li>
-  <li><strong>Fetch API:</strong> HTTP requests with custom error handling and token authentication.</li>
-</ul>
+- **React 19:** Modern React with hooks, context API, and functional components.
+- **Vite:** Fast build tool for development and production.
+- **React Router DOM:** Client-side routing for single-page application navigation.
+- **Bootstrap 5:** CSS framework for responsive design and components.
+- **React Bootstrap Icons:** Icon library for UI elements.
+- **ESLint:** Code linting for maintainable JavaScript/React code.
+- **Custom Hooks:** Reusable logic for API calls, forms, authentication, and data fetching.
+- **Context API:** State management for authentication, notifications, and confirmations.
+- **Fetch API:** HTTP requests with custom error handling and token authentication.
 
-<h2>Project Structure</h2>
 
-<ul>
-  <li><strong>components:</strong> Reusable UI components (tables, forms, navigation).</li>
-  <li><strong>hooks:</strong> Custom hooks for logic separation (e.g., useApi, useForm).</li>
-  <li><strong>pages:</strong> Page components for routing.</li>
-  <li><strong>contexts:</strong> React contexts for global state.</li>
-  <li><strong>utils:</strong> Utility functions for API, errors, and formatting.</li>
-  <li><strong>services:</strong> API service functions.</li>
-</ul>
+##Project Structure
 
-<h2>Learning Outcomes</h2>
+- `components` Reusable UI components (tables, forms, navigation).
+- `hooks` Custom hooks for logic separation (e.g., useApi, useForm).
+- `pages` Page components for routing.
+- `contexts` React contexts for global state.
+- `utils` Utility functions for API, errors, and formatting.
+- `services` API service functions.
+
+
+##Learning Outcomes
 
 This project highlights skills in:
 
